@@ -1,0 +1,239 @@
+@charset "ISO-8859-1"
+/*================common================*/
+body {
+	background-color: #dddddd85 !important;
+}
+
+ul {
+	list-style: none;
+}
+
+* {
+	color: #686f7a;
+	font-family: sf pro text, -apple-system, BlinkMacSystemFont, Roboto,
+		segoe ui, Helvetica, Arial, sans-serif, apple color emoji,
+		segoe ui emoji, segoe ui symbol;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none !important;
+	color: #505763 !important;
+}
+
+input[type='text'] {
+	outline: none;
+}
+
+/*================header================*/
+header {
+	background-color: #29303b;
+}
+
+.header-container {
+	display: flex;
+	align-items: center;
+}
+
+.logo {
+	border-right: 2px solid #ddd;
+	height: 8vh;
+	padding: 0 3vh;
+}
+
+.logo img {
+	height: 8vh;
+	background-color: #fff;
+}
+
+.step {
+	width: 90%;
+	text-align: left;
+	padding-left: 2%;
+}
+
+/*================section================*/
+section {
+	width: 100%;
+	display: flex !important;
+}
+
+section .left-section {
+	width: 70%;
+	border: 1px solid #ddd;
+}
+
+section .right-section {
+	width: 30%;
+}
+
+section .left-section .video-container {
+	height: 60vh;
+}
+
+section .left-section .video-container video {
+	width: 100%;
+	height: 60vh;
+}
+
+.carousel-control-next, .carousel-control-prev {
+	height: 50px !important;
+    position: absolute !important;
+    top: 40% !important;
+}
+
+.carousel-indicators {
+	display: none !important;
+}
+
+.carousel-item.active {
+	text-align: center !important;
+    line-height: 60vh !important;
+}
+
+.carousel-item.active p {
+	font-weight: 300;
+	font-size: 36px;
+}
+
+section .left-section .sub-menu ul li {
+	display: inline-block;
+}
+
+section .left-section .sub-menu ul li a {
+	font-weight: 700;
+    line-height: 1.2;
+    font-size: 1rem;
+    padding: 10px;
+}
+
+section .left-section .sub-menu ul li:first-child>a{
+	border-bottom: 2px solid #000;
+}
+
+section .left-section .sub-menu ul li:nth-child(2)>a:visited{
+	border-bottom: 2px solid #000;
+}
+
+section .left-section .course-info-container {
+	margin: 10px auto;
+	max-width: 600px;
+	height: 100vh;
+}
+
+section .left-section .course-info-container img {
+	width: 56px;
+	height: 56px;
+}
+
+.btn-link {
+	font-weight: 700 !important;
+	color: #29303b !important;
+}
+
+.btn-link:hover {
+	text-decoration: none !important;
+}
+
+.card-body {
+	padding: 0.25rem !important;
+	display: flex;
+}
+
+.card-body:hover {
+	cursor: pointer;
+	background-color: #eee;
+}
+
+.card-body .right {
+	padding-left: 10px;
+}
+
+.card-body input[type='checkbox']:checked {
+	background-color: #007791 !important;
+	border-color: #007791;
+}
+
+.sub-menu {
+	margin: 0 30px;
+	border-bottom: 1px solid #ddd;
+	padding: 10px;	
+}
+
+.sub-menu ul {
+	margin: 0 !important;
+}
+
+.course-info-container>div {
+	border-bottom: 1px solid #ddd;
+	overflow: hidden;
+	padding: 10px 0;
+}
+
+.course-info-container h3 {
+	margin-top: 50px;
+}
+
+.course-info-container>div>span {
+	display: inline-block;
+	width: 30%;
+}
+
+.course-info-container>div:nth-child(2)>span{
+	position: relative;
+	top: -70px;
+}
+
+.course-info-container>div .info {
+	display: inline-block;
+	width: 69%;
+}
+
+.course-info-container>div p {
+	margin-bottom: 0 !important;
+}
+
+ .info>div {
+	overflow: hidden;
+}
+
+.info .user-image-area img {
+	display: inline-block;
+}
+
+.user-image-area>div:nth-child(2) {
+	display: inline-block;
+}
+
+.user-image-area>div {
+	display: inline-block;
+}
+
+.user-image-area>div:nth-child(2) {
+	margin-left: 30px;
+}
+
+.info>div:nth-child(2) {
+	margin-top: 20px;
+}	
+
+.course-info-container .instructor {
+	position: relative;
+    top: -160px;
+}
+
+.btnBack {
+	font-size: 16px;
+    font-family: cursive;
+    color: #fff !important;
+    background: #c22727;
+    padding: 6px 12px;
+    padding-bottom: 10px;
+    border-radius: 8px;
+    margin-left: 10px;
+}
+
+
+/*================footer================*/

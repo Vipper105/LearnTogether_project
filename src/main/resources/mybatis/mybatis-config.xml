@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd" >
+
+<configuration>
+	<!--1. class name's alias -->
+	<typeAliases>
+		<!-- user -->
+		<typeAlias type="tp.kits3.learntogether.user.vo.User" alias="userVO" /> 
+		<typeAlias type="tp.kits3.learntogether.user.vo.Role" alias="roleVO" />
+		<typeAlias type="tp.kits3.learntogether.user.vo.CourseOrder" alias="courseOrderVO" /> 
+		<typeAlias type="tp.kits3.learntogether.user.vo.Order" alias="orderVO" /> 
+		<typeAlias type="tp.kits3.learntogether.user.vo.Course" alias="courseVO"/>
+		<typeAlias type="tp.kits3.learntogether.user.vo.Category" alias="categoryVO"/>	
+		<typeAlias type="tp.kits3.learntogether.user.vo.Instructor" alias="instructorVO"/>
+		<typeAlias type="tp.kits3.learntogether.user.vo.CourseLevel" alias="courseLevelVO"/>
+		<typeAlias type="tp.kits3.learntogether.user.vo.Section" alias="sectionVO"/>
+		<typeAlias type="tp.kits3.learntogether.user.vo.Test" alias="testVO"/> 
+		<typeAlias type="tp.kits3.learntogether.user.vo.MultichoiceQuestion" alias="multichoiceQuestionVO"/> 
+		<typeAlias type="tp.kits3.learntogether.user.vo.AnswerMultichoiceq" alias="answerMultichoiceqVO"/>
+		<typeAlias type="tp.kits3.learntogether.user.vo.Resultmultiq" alias="resultmultiqVO"/>
+		<typeAlias type="tp.kits3.learntogether.user.vo.Status" alias="statusVO"/>
+		<typeAlias type="tp.kits3.learntogether.user.vo.StatusUser" alias="statusUserVO"/>
+		<typeAlias type="tp.kits3.learntogether.user.vo.TestResult" alias="testResultVO"/>
+		<typeAlias type="tp.kits3.learntogether.user.vo.Lesson" alias="lessonVO"/>
+		<typeAlias type="tp.kits3.learntogether.user.vo.TestType" alias="testTypeVO"/>
+		<typeAlias type="tp.kits3.learntogether.user.dto.MyCourses" alias="myCoursesDto"/>
+		<typeAlias type="tp.kits3.learntogether.user.dto.UserInstructorCourses" alias="userInstructorCoursesDto"/>
+		<typeAlias type="tp.kits3.learntogether.user.dto.SectionLessionCourse" alias="sectionLessionCourseDto"/>
+		<typeAlias type="tp.kits3.learntogether.user.vo.Certificate" alias="certificateVO" />
+		<typeAlias type="tp.kits3.learntogether.user.vo.Certificates_user" alias="certificateUserVO" />
+		<typeAlias type="tp.kits3.learntogether.user.vo.Invoice" alias="invoiceVO" />
+		<typeAlias type="tp.kits3.learntogether.user.vo.Promotion" alias="promotionVO" />
+		<typeAlias type="tp.kits3.learntogether.user.vo.PromotionCourse" alias="promotionCourseVO" />
+		<typeAlias type="tp.kits3.learntogether.user.vo.EssayQuestion" alias="essayQuestionVO" />
+		<typeAlias type="tp.kits3.learntogether.user.vo.AnswerEssayq" alias="answerEssayqVO" />
+		<typeAlias type="tp.kits3.learntogether.user.vo.Rating" alias="ratingVO" />
+		<typeAlias type="tp.kits3.learntogether.user.vo.Resultessayq" alias="resultEssayqVO" />
+		<typeAlias type="tp.kits3.learntogether.user.vo.CoursePricing" alias="coursePricingVO" />
+
+		
+		<!-- admin -->
+	    <typeAlias type="tp.kits3.learntogether.admin.vo.AnswerEssay" alias="answerEssayAdminVO" /> 
+		<typeAlias type="tp.kits3.learntogether.admin.vo.AnswerMultiChoice" alias="answerMultiChoiceAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.Category" alias="categoryAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.Certificate" alias="certificateAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.Certificates_user" alias="certificatesUserAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.CourseLevel" alias="courseLevelAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.Course" alias="courseAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.CourseOrder" alias="courseOrderAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.Essay" alias="essayAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.Instructor" alias="instructorAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.Invoice" alias="invoiceAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.Lesson" alias="lessonAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.MultiChoice" alias="multiChoiceAdminVO" />
+	    <typeAlias type="tp.kits3.learntogether.admin.vo.Order" alias="orderAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.Promotion" alias="promotionAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.PromotionCourse" alias="promotionCourseAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.Rating" alias="ratingAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.ResultEssay" alias="resultEssayAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.ResultMultichoice" alias="resultMultichoiceAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.Role" alias="roleAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.Section" alias="sectionAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.Status" alias="statusAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.StatusUser" alias="statusUserAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.Test" alias="testAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.TestType" alias="testTypeAdminVO" />
+		<typeAlias type="tp.kits3.learntogether.admin.vo.User" alias="userAdminVO" />
+	</typeAliases>
+	
+</configuration>

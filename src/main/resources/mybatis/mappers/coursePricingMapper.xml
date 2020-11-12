@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mappers.coursePricingMapper"> <!--like package of class-->
+	<!--no need loop result set-->
+	<resultMap type="coursePricingVO" id="coursePricingResult">
+		<result property="id" column="id" />
+		<result property="price" column="price" />
+	</resultMap>
+	
+	<!--make sql statement-->
+	
+	<select id="selectAll" resultMap="coursePricingResult">
+		<![CDATA[
+			select * from course_pricing
+		]]>
+	</select>
+
+	<select id="selectOne" resultMap="coursePricingResult" parameterType="int">
+		<![CDATA[
+			select * from course_pricing
+			where id = #{id}
+		]]>
+	</select>
+	
+	
+	<insert id="insert" parameterType="coursePricingVO" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into course_pricing (price)
+			values (#{price})
+		]]>
+	</insert>
+	
+	<update id="update" parameterType="coursePricingVO">
+	<![CDATA[
+			update course_pricing
+			set price = #{price}, 
+			where id = #{id}
+		]]>
+	</update>
+	
+	
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete course_pricing
+			where id = #{id}
+		]]>
+	</delete>
+	
+</mapper>
+
+

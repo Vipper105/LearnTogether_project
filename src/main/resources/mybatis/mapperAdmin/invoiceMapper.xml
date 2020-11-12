@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- create SQL Mapper -->
+<!--  @author NguyenDoanNam  -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapperAdmin.invoiceMapper"> <!-- like package -->
+	<!-- no need loop resultSet -->
+	<resultMap type="invoiceAdminVO" id="invoiceResult">
+		<result property="id" column="id" />
+		<result property="createdate" column="createDate" />
+        <association property="order" column="orderId" javaType="orderAdminVO"
+            select="mapperAdmin.ordersMapper.selectbyId" />
+	</resultMap>
+	<!-- make sql statement -->
+	
+	<select id="selectAll" resultMap="invoiceResult"> 
+		<![CDATA[
+			select * from invoice
+		]]>
+	</select>
+	<select id="selectbyId" resultMap="invoiceResult" parameterType="int"> 
+		<![CDATA[
+			SELECT * FROM invoice where invoice.id = #{id};
+		]]>
+	</select>
+</mapper>

@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+/* =================================== */
+.tablestype{
+	border: 1px solid black;
+	width: 800px;
+	margin-top: 30px;
+}
+
+.tablestype tr:nth-child(1){
+background: #5e0655;
+color: #fff;
+padding: 5px 10px;
+}
+
+.tablestype tr{
+	text-align: center;
+	
+}
+
+.tablestype tr th{
+	
+}
+
+
+.tablestype tr td{
+	font-family: cursive;
+}

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mappers.testResultMapper"> <!--like package of class -->
+	<!--no need loop result set -->
+	<resultMap type="testResultVO" id="testResultMap">
+		<result property="id" column="id" />
+		<result property="userId" column="userId" />
+		<result property="instructorId" column="instructorId" />
+		<result property="score" column="score" />
+		<result property="testId" column="testId" />
+		<result property="dateTest" column="dateTest" />
+		<result property="timesDoTest" column="timesDoTest" />
+		
+
+	</resultMap>
+
+	<!--make sql statement -->
+	
+	<insert id="insert" parameterType="testResultVO"
+		useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into test_result(userId, instructorId, score, testId, dateTest,timesDoTest)
+			values (#{userId}, #{instructorId}, #{score}, #{testId}, #{dateTest},#{timesDoTest})
+		]]>
+	</insert>
+	
+	<select id="selectAllByUserTest" resultMap="testResultMap">
+		<![CDATA[  
+			select * from test_result 
+			where userId=${userID} and testId=${testID}
+		]]>
+	</select>
+	
+	<select id="selectAllByUser" resultMap="testResultMap">
+		<![CDATA[  
+			select * from test_result 
+			where userId=#{userId}
+		]]>
+	</select>
+	
+	<!--// make sql statement -->
+	<select id="selectAll" resultMap="testResultMap">
+		<![CDATA[  
+			select * from test_result
+		]]>
+	</select>
+	
+	
+	<select id="selectOne" resultMap="testResultMap"
+		parameterType="int">
+		<![CDATA[
+			select * from test_result
+			where id = #{id}
+		]]>
+	</select>
+
+	<update id="update" parameterType="testResultVO">
+	<![CDATA[
+			update test_result
+			set userId =#{userId},
+				instructorId = #{instructorId},
+				numquestion = #{numQuestion},
+				score = #{score},
+				testId = #{testId},
+				dateTest = #{dateTest},
+				timesDoTest = #{timesDoTest}
+							
+			where id=#{id}	
+		]]>
+	</update>
+
+
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete test_result
+			where id = #{id}
+		]]>
+	</delete>
+
+</mapper>

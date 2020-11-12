@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- create SQL Mapper -->
+<!--  @author NguyenDoanNam  -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapperAdmin.testMapper"> <!-- like package -->
+	<!-- no need loop resultSet -->
+	<resultMap type="testAdminVO" id="testResult">
+		<result property="id" column="id" />
+		<result property="title" column="title" />
+		<result property="numquestion" column="numQuestion" />
+		<result property="score" column="score" />
+		<result property="updatedate" column="updateDate" />
+		<association property="section" column="sectionId"
+			javaType="sectionAdminVO" select="mapperAdmin.sectionMapper.selectbyId" />
+		<association property="testtype" column="typeId"
+			javaType="testTypeAdminVO" select="mapperAdmin.testTypeMapper.selectbyId" />
+	</resultMap>
+	<!-- make sql statement -->
+
+	<!-- List<Book> books = selectAll -->
+	<select id="selectAll" resultMap="testResult"> 
+		<![CDATA[
+			select * from test
+		]]>
+	</select>
+	<select id="selectbySectionId" resultMap="testResult"
+		parameterType="int">
+		<![CDATA[
+			select * from test
+			where test.sectionId = #{section.id}
+		]]>
+	</select>
+	<select id="selectbyId" resultMap="testResult" parameterType="int"> 
+		<![CDATA[
+			SELECT * FROM test where test.id = #{id};
+		]]>
+	</select>
+     <insert id="insert" parameterType="testTypeAdminVO">
+		<![CDATA[
+			insert into test(title,numQuestion,score,updatedate,sectionId,testTypeId)
+			values (#{title},#{numQuestion},#{score},#{updatedate},#{section.id},#{testType.id})
+		]]>
+	</insert>
+	<update id="update" parameterType="testTypeAdminVO">
+		UPDATE test SET
+		title = #{type},
+		numQuestion = #{numQuestion},
+		score = #{score},
+		updatedate = #{updatedate},
+		sectionId = #{section.id},
+		testTypeId = #{testType.id}
+		WHERE test.id = #{id};
+	</update>
+	<delete id = "deletebyId" parameterType = "int">
+      DELETE from test WHERE test.id = #{id};
+   </delete>
+</mapper>

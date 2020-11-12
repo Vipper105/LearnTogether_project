@@ -1,0 +1,145 @@
+@charset "ISO-8859-1";
+/**
+* 	@author: Diep Nguyen
+*/
+/*================common================*/
+* {
+	color: #686f7a;
+	font-family: sf pro text, -apple-system, BlinkMacSystemFont, Roboto,
+		segoe ui, Helvetica, Arial, sans-serif, apple color emoji,
+		segoe ui emoji, segoe ui symbol;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+/*================header================*/
+.header-container {
+	display: flex;
+	align-items: center;
+}
+
+.logo {
+	border-right: 2px solid #ddd;
+	height: 10vh;
+	padding: 0 3vh;
+}
+
+.logo img {
+	height: 10vh;
+}
+
+.step {
+	width: 90%;
+	text-align: left;
+	padding-left: 2%;
+}
+
+.exit {
+	text-align: right;
+	color: #007791;
+	font-weight: 700;
+}
+
+.progress {
+	display: flex;
+}
+
+.progress .inprogress {
+	background-color: #8a92a3;
+	width: 100%;
+	height: 1vh;
+	border-radius: 3px;
+}
+
+.progress .not-started {
+	background-color: #ddd;
+	width: 0%;
+	height: 1vh;
+	border-radius: 0 3px 3px 0;
+}
+
+/*================section================*/
+section {
+	height: 79vh;
+	text-align: center;
+	padding-top: 30px;
+	'
+}
+
+section h1 {
+	color: #29303b;
+}
+
+section p {
+	margin: 21px 0 30px;
+}
+
+.section-container {
+	text-align: center;
+	display: inline-block;
+	width: 40%;
+}
+
+.section-container select {
+	height: 44px;
+	width: 100%;
+	padding: 10px 40px 10px 12px;
+	font-size: 16px;
+	color: #29303b;
+	border: 1px solid #8a92a3;
+	border-radius: 2px;
+	display: block;
+	cursor: pointer;
+	outline: none
+}
+
+.section-container select option:checked {
+	border-color: 1px solid #76c5d6;
+}
+
+	
+/*================footer================*/
+footer {
+	height: 10vh;
+	border-top: 2px solid #ddd;
+}
+
+footer .footer-container  {
+	line-height: 10vh;
+	margin: 0 30vh;
+	display: flex;
+	padding: 10px 0;
+}
+
+footer input[type='submit']:first-child {
+	margin-right: auto;
+	z-index: 3;
+}
+
+footer input[type='submit']:last-child {
+	
+}
+
+.btn {
+	padding: 10px;
+	border: 1px solid #ddd;
+	font-weight: 700;
+	cursor: pointer;
+	outline: none;
+}
+
+#continueBtn {
+	background-color: #ec5252;
+	color: #fff;
+}
+
+#previousBtn {
+	color: #007791;
+    background-color: #fff;
+    border: 1px solid #007791;
+}

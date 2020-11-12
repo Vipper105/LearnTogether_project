@@ -1,0 +1,92 @@
+login
+ràng buộc chung các field 
+- ko cho copy/paste             +V
+- length các login từ 6 -> 320 kí tự   +V
+- check validate gmail     +V
+- username ko dc nhập kí tự đặc biệt trừ @  +V
+
+Register
+username
+- kiểm tra định dạng gmail      +V
+
+password:
+- phải có ít nhất 1 kí tự đặc biệt + kí tự thường + kí tự hoa + số mới đăng kí thành công   +V
+VD: Huy@123
+
+
+=====================================================================================================================
+Login
+check null   +V
+
+Username: 
+- kiểm tra username/gmail đã tồn tại hay chưa => Use Ajax     +V
+- Không cho đăng nhập khi tạo tài khoản đã tồn tại trong DB   +V 
+- Khi click vào ô thì dòng chữ báo lỗi sẽ biến mất     
+- ko nhập kí tự đặc biệt trừ @   +V
+
+password:
+- nhập phải lớn hơn 6 kí tự   +V
+login bằng gmail      +V
+
+mã hóa Bcrypt   +V
+
+session tracking  +V  (* Khi database thay đổi thì giá trị trên session ko thay đổi theo database vì session đơn giản
+ chỉ là 1 đoạn text hay object dc lưu trên server, ko connect với DB)
+
+After 5 unsuccessful attempts of login, user login credentials should get locked for specific period e.g. 24 hours X
+
+======================================================================================================================
+Remember password
+Khi login mà check remember password thì sẽ lưu username,password và remember status check vào cookie +V
+Khi login mà ko check thì sẽ xóa cookie
+
+
+=====================================================================================================================
+Change password
+phải login vào mới change dc password   +V
+
+validate field    +V
+- old password phải chính xác
+- new-password và renew-password phải trùng nhau
+
+=====================================================================================================================
+User là giảng viên (làm 2 role )
+chọn button instructor thì hiển thị tới phần tạo khóa học 
+
+=====================================================================================================================
+Test
+
+Tạo bài test 
+=> có 2 lựa chọn tạo test trắc nghiệm hay tự luận (2 buttons choice)  +V
+
++ Tự luận:
+- Bài tự luận gồm nhiều câu hỏi (Array<Question>) : Question{NO. câu hỏi, nội dung, điểm cho câu hỏi đó}   
+  + Tổng điểm bài tự luận là tổng điểm các câu hỏi
+- Có điểm cho mỗi câu hỏi
+- Title câu hỏi
+- Có 1 form điền kết quả làm bài
+
+
++ Trắc nghiệm:
+- Bài trắc nghiệm gồm nhiều câu hỏi (Array<Question>) : Question{NO. câu hỏi, nội dung, điểm cho câu hỏi đó,đáp án (int)}     +V
+- Có điểm cho mỗi câu hỏi  +V
+- Title câu hỏi +V
+- 4 đáp án (Các đáp án sẽ được xáo trộn lại sau mỗi lần có người thi) => xáo trộn câu hỏi rồi câu trả lời dựa vào userID của người dùng
+
+- Check null checkbox  +V
+- Show ra bài test đã làm theo userID và testID  +V
+
+Chấm điểm bài test
+
++ Tự luận : 
+- điểm sẽ do giáo viên đánh giá
+- 
+
++ Trắc nghiệm:
+- điểm 
+
+===================================================================================================================
+Set quyền cho user dùng interceptor
+
+
+

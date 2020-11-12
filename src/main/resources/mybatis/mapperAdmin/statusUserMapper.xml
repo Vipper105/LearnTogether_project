@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- create SQL Mapper -->
+<!-- @author NguyenDoanNam -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapperAdmin.statusUserMapper"> <!-- like package -->
+	<!-- no need loop resultSet -->
+	<resultMap type="statusUserAdminVO" id="statusUserResult">
+		<result property="id" column="id" />
+		<association property="user" column="userId"
+			javaType="userAdminVO" select="mapperAdmin.userMapper.selectbyId" />
+		<association property="status" column="status_id"
+			javaType="statusAdminVO" select="mapperAdmin.statusMapper.selectbyId" />
+	</resultMap>
+	<!-- make sql statement -->
+
+	<!-- List<Book> books = selectAll -->
+	<select id="selectAll" resultMap="statusUserResult"> 
+		<![CDATA[
+			select * from status_user
+		]]>
+	</select>
+	<select id="selectbyId" resultMap="statusUserResult"
+		parameterType="int">
+		<![CDATA[
+			select * from status_user
+			where status_user.id = #{id}
+		]]>
+	</select>
+	<insert id="insert" parameterType="statusUserAdminVO">
+		<![CDATA[
+			insert into status_user(userId,status_id)
+			values (#{user.id},#{status.id})
+		]]>
+	</insert>
+	<update id="update" parameterType="statusUserAdminVO">
+		UPDATE status_user SET
+		userId = #{user.id},
+		status_id = #{status.id}
+		WHERE status_user.id = #{id};
+	</update>
+	<delete id="deleteById" parameterType="int">
+		DELETE from status_user WHERE status_user.id = #{id};
+	</delete>
+
+</mapper>

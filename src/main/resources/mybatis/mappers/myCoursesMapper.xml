@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mappers.myCoursesMapper">
+	<resultMap type="myCoursesDto" id="myCoursesResult">
+		<result property="id" column="id" />	
+		<result property="courseTitle" column="courseTitle"/>
+		<result property="description" column="description"/>
+		<result property="urlImg" column="urlImg"/>
+		<result property="user_id" column="user_id" />
+		
+	</resultMap>
+	
+	<select id="selectAll" resultMap="myCoursesResult">
+		<![CDATA[
+			SELECT id, courseTitle, description, urlImg, user_id , priceCourse FROM course INNER JOIN 
+			(SELECT courseId, user_id FROM orders o INNER JOIN 
+			course_order c ON o.id = c.orderId  ) AS c ON course.id = c.courseId
+			where user_id = #{user_id}
+		]]>
+	</select>
+	
+			<select id="selectOne" resultMap="myCoursesResult"
+		parameterType="int">
+		<![CDATA[
+			SELECT id, courseTitle, description, urlImg, user_id , priceCourse FROM course INNER JOIN 
+			(SELECT courseId, user_id FROM orders o INNER JOIN 
+			course_order c ON o.id = c.orderId  ) AS c ON course.id = c.courseId
+			where user_id = #{user_id} and id= #{id}
+		]]>
+	</select>
+
+</mapper>

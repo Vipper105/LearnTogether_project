@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mappers.roleMapper"> <!--like package of class -->
+	<!--no need loop result set -->
+	<resultMap type="roleVO" id="roleResult">
+		<result property="id" column="id" />
+		<result property="rolename" column="roleName" />
+
+	</resultMap>
+
+	<!--make sql statement -->
+	<select id="selectAll" resultMap="roleResult">
+		<![CDATA[  
+			select * from role
+		]]>
+	</select>
+	<select id="selectOne" resultMap="roleResult"
+		parameterType="int">
+		<![CDATA[
+			select * from role
+			where id = #{id}
+		]]>
+	</select>
+
+	<select id="selectOneByRoleName" resultMap="roleResult"
+		parameterType="String">
+		<![CDATA[
+			select * from role
+			where rolename= #{rolename}
+		]]>
+	</select>
+	
+	<select id="selectOneByRoleID" resultMap="roleResult"
+		parameterType="int">
+		<![CDATA[
+			select * from role
+			where id= #{id}
+		]]>
+	</select>
+
+	<insert id="insert" parameterType="roleVO"
+		useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into role (id, roleName)
+			values (#{id}, #{rolename})
+		]]>
+	</insert>
+
+
+	<update id="update" parameterType="roleVO">
+	<![CDATA[
+			update role
+			set id =#{id},
+			rolename = #{roleName}
+			
+				
+		]]>
+	</update>
+
+
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete role
+			where id = #{id}
+		]]>
+	</delete>
+
+</mapper>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mappers.answerMultichoiceqMapper"> <!--like package of class -->
+	<!--no need loop result set -->
+	<resultMap type="answerMultichoiceqVO" id="answerMultichoiceqResult">
+		<result property="id" column="id" />
+		<result property="multichoiceId" column="multichoiceId" />
+		<result property="answerContent" column="answerContent" />
+		<result property="isCorrect" column="isCorrect" />
+	</resultMap>
+
+	<!--make sql statement -->
+	<select id="selectAll" resultMap="answerMultichoiceqResult">
+		<![CDATA[  
+			select * from answer_multichoiceq
+		]]>
+	</select>
+	
+	<select id="selectAllByQuestionID" resultMap="answerMultichoiceqResult"
+		parameterType="int">
+		<![CDATA[
+			select * from answer_multichoiceq
+			where multichoiceId = #{multichoiceid}
+		]]>
+	</select>
+	
+	<select id="selectAllByMultichoiceq" resultMap="answerMultichoiceqResult">
+		SELECT * 
+		FROM  answer_multichoiceq
+		WHERE multichoiceId IN 
+		<foreach collection="list" index="index" item="question" open="(" separator="," close=")">
+			${question.id}
+		</foreach> 
+	</select>
+	
+	<select id="selectOne" resultMap="answerMultichoiceqResult"
+		parameterType="int">
+		<![CDATA[
+			select * from answer_multichoiceq
+			where id = #{id}
+		]]>
+	</select>
+
+	<insert id="insert" parameterType="answerMultichoiceqVO"
+		useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into answer_multichoiceq (multichoiceId, answerContent,isCorrect)
+			values (#{multichoiceid}, #{answercontent},#{iscorrect})
+		]]>
+	</insert>
+
+	<update id="updateContent" parameterType="answerMultichoiceqVO">
+	<![CDATA[
+			update answer_multichoiceq
+			set answerContent = #{answercontent},
+				isCorrect = #{iscorrect}
+			where id=#{id}	
+		]]>
+	</update>
+	
+	<update id="update" parameterType="answerMultichoiceqVO">
+	<![CDATA[
+			update answer_multichoiceq
+			set multichoiceId =#{multichoiceid},
+				answerContent = #{answercontent},
+				isCorrect = #{iscorrect}
+			where id=#{id}	
+		]]>
+	</update>
+
+
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete answer_multichoiceq
+			where id = #{id}
+		]]>
+	</delete>
+</mapper>

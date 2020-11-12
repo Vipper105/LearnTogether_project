@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mappers.userMapper"> <!--like package of class -->
+	<!--no need loop result set -->
+	<resultMap type="userVO" id="userResult">
+		<result property="id" column="id" />
+		<result property="email" column="email" />
+		<result property="userName" column="userName" />
+		<result property="password" column="password" />
+		<result property="fullName" column="fullName" />
+		<result property="address" column="address" />
+		<result property="amount" column="amount" />
+		<result property="birthDate" column="birthDate" />
+		<result property="roleId" column="roleId" />
+		<result property="urlImg" column="urlImg" />
+		<result property="amountAdmin" column="amountAdmin" />
+		<result property="headLine" column="headLine" />
+		<result property="createDay" column="createDay" />
+		<result property="biography" column="biography" />
+		<result property="userNameFb" column="userNameFb" />
+		<result property="token" column="token" />
+	</resultMap>
+
+	<!--make sql statement -->
+	<select id="selectAll" resultMap="userResult">
+		<![CDATA[  
+			select * from user
+		]]>
+	</select>
+	<select id="selectOne" resultMap="userResult"
+		parameterType="int">
+		<![CDATA[
+			select * from user
+			where id = #{id}
+		]]>
+	</select>
+
+	<select id="findOneUserByUsername" resultMap="userResult"
+		parameterType="String">
+		<![CDATA[
+			select * from user
+			where  username= #{username}
+		]]>
+	</select>
+    <select id="findByResetToken" resultMap="userResult"
+		parameterType="String">
+		<![CDATA[
+			select * from user
+			where  token= #{token}
+		]]>
+	</select>
+	<select id="findOneUserByEmail" resultMap="userResult"
+		parameterType="String">
+		<![CDATA[
+			select * from user
+			where  email= #{email}
+		]]>
+	</select>
+	
+	<select id="getUserByInstructorID" resultType="int" parameterType="int">
+		<![CDATA[
+			SELECT distinct user.id
+			FROM course INNER JOIN instructor
+			ON course.instructorId = instructor.id
+			INNER JOIN user
+			ON instructor.userId = user.id
+			WHERE course.instructorId = #{course.instructorId}
+		]]>
+	</select>
+
+	<insert id="insert" parameterType="userVO"
+		useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into user (email, username, password, fullname, address, amount, birthdate, roleId, urlimg, amountAdmin, headLine, createDay, biography, userNameFb, token)
+			values (#{email}, #{username}, #{password}, #{fullname}, #{address}, #{amount}, #{birthdate},#{roleId},#{urlimg}, #{amountAdmin}. ${headLine}, ${createDay}, ${biography}, ${userNameFb}, ${token})
+		]]>
+	</insert>
+
+	<insert id="insertRegister" parameterType="userVO"
+		useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into user (fullname,email,password,roleId,userName)
+			values (#{fullname},#{email}, #{password}, #{roleId},#{username})
+		]]>
+	</insert>
+
+	<update id="update" parameterType="userVO">
+	<![CDATA[
+			update user
+			set email = #{email},
+				username = #{username},
+				password = #{password},
+				fullname = #{fullname},
+				address = #{address},
+				amount = #{amount},
+				birthdate = #{birthDate},
+				roleId= #{roleId},
+				urlimg= #{urlImg},
+				amountAdmin = #{amountAdmin},
+				headLine = #{headLine},
+				biography = #{biography},
+				userNameFb = #{userNameFb},
+				createDay = #{createDay},
+				token = #{token}
+			where id= #{id}	
+		]]>
+	</update>
+
+	<update id="updatePassword" parameterType="userVO">
+	<![CDATA[
+			update user
+			set password = #{password}	
+			where id=#{id}			
+		]]>
+	</update>
+
+
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete user
+			where id = #{id}
+		]]>
+	</delete>
+
+</mapper>

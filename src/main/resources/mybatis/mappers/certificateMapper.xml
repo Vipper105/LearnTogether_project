@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mappers.certificateMapper"> <!--like package of class-->
+	<!--no need loop result set-->
+	<resultMap type="certificateVO" id="certificateResult">
+		<result property="id" column="id" />
+		<result property="certificatename" column="certificatename" />
+		<result property="provider" column="provider" />
+		
+	</resultMap>
+	
+	<!--make sql statement-->
+	<select id="selectAll" resultMap="certificateResult">
+		<![CDATA[
+			select * from certificate
+		]]>
+	</select>
+	<select id="selectOne" resultMap="certificateResult" parameterType="int">
+		<![CDATA[
+			select * from certificate
+			where id = #{id}
+		]]>
+	</select>
+	
+	<insert id="insert" parameterType="certificateVO" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into certificate (id, certificatename, provider)
+			values ( #{id}, #{certificatename}, #{provider})
+		]]>
+	</insert>
+	
+	<update id="update" parameterType="certificateVO">
+	<![CDATA[
+			update certificate
+			set id =#{id},
+				certificatename = #{certificatename},
+				provider = #{provider},
+				
+			
+		]]>
+	</update>
+	
+	
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete certificate
+			where id = #{id}
+		]]>
+	</delete>
+	
+</mapper>

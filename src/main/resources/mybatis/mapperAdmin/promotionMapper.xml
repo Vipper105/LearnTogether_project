@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- create SQL Mapper -->
+<!--  @author NguyenDoanNam  -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapperAdmin.promotionMapper"> <!-- like package -->
+	<!-- no need loop resultSet -->
+	<resultMap type="promotionAdminVO" id="promotionResult">
+		<result property="id" column="id" />
+		<result property="promotionName" column="promotionName" />
+		<result property="enddate" column="endDate" />
+		<result property="discount" column="discount" />
+		<result property="startdate" column="startDate" />
+		
+	</resultMap>
+	<!-- make sql statement -->
+
+	<!-- List<Book> books = selectAll -->
+	<select id="selectAll" resultMap="promotionResult"> 
+		<![CDATA[
+			select * from promotion
+		]]>
+	</select>
+	<select id="selectbyId" resultMap="promotionResult"
+		parameterType="int">
+		<![CDATA[
+			select * from promotion
+			where promotion.id = #{id}
+		]]>
+	</select>
+
+</mapper>

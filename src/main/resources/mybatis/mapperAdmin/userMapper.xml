@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapperAdmin.userMapper">
+	
+	<resultMap type="userAdminVO" id="userResult">
+		<result property="id" column="id" />
+		<result property="email" column="email" />
+		<result property="username" column="userName" />
+		<result property="password" column="password" />
+		<result property="fullname" column="fullName" />
+		<result property="address" column="address" />
+		<result property="amount" column="amount" />
+		<result property="birthdate" column="birthDate" />
+		<result property="urlimg" column="urlImg" />
+		<association property="role" column="roleId"
+			javaType="roleVO" select="mapperAdmin.roleMapper.selectbyId" />
+	</resultMap>
+
+	<select id="selectAll" resultMap="userResult"> 
+		<![CDATA[
+			select * from user
+		]]>
+	</select>
+	<select id="selectTotalClient" resultType="Integer"> 
+		<![CDATA[
+			select COUNT(id) from user
+		]]>
+	</select>
+	<select id="selectNewUser" resultType="Integer"> 
+		<![CDATA[
+			select COUNT(id) from user WHERE MONTH(user.createDay) = MONTH(NOW())
+		]]>
+	</select>
+	<select id="selectbyId" resultMap="userResult"
+		parameterType="int">
+		<![CDATA[
+			select * from user
+			where user.id = #{id}
+		]]>
+	</select>
+	
+	<insert id="insert" parameterType="userAdminVO">
+		<![CDATA[
+			insert into user (email,userName,password,fullName,address,amount,birthDate,roleId,urlImg)
+			values (#{email},#{username},#{password},#{fullname},#{address},#{amount},#{birthdate},#{role.id},#{urlimg})
+		]]>
+	</insert>
+	<update id="update" parameterType="userAdminVO">
+		UPDATE user SET 
+		email = #{email},
+		userName = #{username},
+		password = #{password},
+		fullName = #{fullname},
+		address = #{address},
+		amount = #{amount},
+		birthDate = #{birthdate},
+		roleId = #{role.id},
+		urlImg = #{urlimg}
+		WHERE user.id = #{id};
+	</update>
+	<delete id = "deleteById" parameterType = "int">
+      DELETE from user WHERE user.id = #{id};
+   </delete>
+</mapper>

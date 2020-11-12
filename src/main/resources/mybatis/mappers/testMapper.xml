@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mappers.testMapper"> <!--like package of class -->
+	<!--no need loop result set -->
+	<resultMap type="testVO" id="testResult">
+		<result property="id" column="id" />
+		<result property="title" column="title" />
+		<result property="numQuestion" column="numQuestion" />
+		<result property="score" column="score" />
+		<result property="sectionId" column="sectionId" />
+		<result property="updateDate" column="updateDate" />
+		<result property="typeId" column="typeId" />
+		<result property="time" column="time" />
+
+	</resultMap>
+
+	<!--make sql statement -->
+	<select id="selectAll" resultMap="testResult">
+		<![CDATA[  
+			select * from test
+		]]>
+	</select>
+	
+	<select id="selectAllTestBySectionID" resultMap="testResult" parameterType="int">
+		<![CDATA[  
+			select * from test
+			where sectionId=#{sectionId}
+		]]>
+	</select>
+	
+	<select id="selectMultiTestBySectionID" resultMap="testResult" parameterType="int">
+		<![CDATA[  
+			select * from test
+			where sectionId=${sectionID} and typeId=${typeID}
+		]]>
+	</select>
+	
+	<select id="selectEssayTestBySectionID" resultMap="testResult" parameterType="int">
+		<![CDATA[  
+			select * from test
+			where sectionId=${sectionID} and typeId=${typeID}
+		]]>
+	</select>
+	
+	<select id="selectOne" resultMap="testResult"
+		parameterType="int">
+		<![CDATA[
+			select * from test
+			where id = #{id}
+		]]>
+	</select>
+
+
+	<insert id="insert" parameterType="testVO"
+		useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into test(title, numQuestion, score, sectionId, updateDate, typeId,time)
+			values (#{title}, #{numQuestion}, #{score}, #{sectionId}, #{updateDate}, #{typeId},#{time})
+		]]>
+	</insert>
+
+	<update id="updateScore" parameterType="testVO">
+	<![CDATA[
+			update test
+			set score = #{score}						
+			where id=#{id}	
+		]]>
+	</update>
+
+	<update id="update" parameterType="testVO">
+	<![CDATA[
+			update test
+			set title =#{title},
+				numQuestion = #{numQuestion},
+				score = #{score},
+				sectionId = #{sectionId},
+				updateDate = #{updateDate},
+				typeId = #{typeId},	
+				time = #{time}		
+			where id=#{id}	
+		]]>
+	</update>
+
+
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete test
+			where id = #{id}
+		]]>
+	</delete>
+
+</mapper>

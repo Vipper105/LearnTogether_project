@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mappers.essayQuestionMapper"> <!--like package of class -->
+	<!--no need loop result set -->
+	<resultMap type="essayQuestionVO" id="essayQuestionResult">
+		<result property="id" column="id" />
+		<result property="title" column="title" />
+		<result property="testId" column="testId" />
+		<result property="score" column="score" />
+		
+	</resultMap>
+
+	<!--make sql statement -->
+	<insert id="insert" parameterType="essayQuestionVO"
+		useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into essay_question (title, testId,score)
+			values (#{title}, #{testId},#{score})
+		]]>
+	</insert>
+	
+	<select id="selectAllByTestID" resultMap="essayQuestionResult">
+		<![CDATA[  
+			select * from essay_question
+			where testId=#{testId}
+		]]>
+	</select>
+	
+	<select id="selectOne" resultMap="essayQuestionResult"
+		parameterType="int">
+		<![CDATA[
+			select * from essay_question
+			where id = #{id}
+		]]>
+	</select>
+	
+	<!--//make sql statement -->
+	<select id="selectAll" resultMap="essayQuestionResult">
+		<![CDATA[  
+			select * from essay_question
+		]]>
+	</select>	
+
+	<update id="update" parameterType="essayQuestionVO">
+	<![CDATA[
+			update essay_question
+			set title =#{title},
+			testId = #{testId},
+			score = #{score}
+			where id=#{id}	
+		]]>
+	</update>
+	
+	<update id="updateContentScore" parameterType="essayQuestionVO">
+	<![CDATA[
+			update essay_question
+			set title =#{title},
+			score = #{score}
+			where id=#{id}	
+		]]>
+	</update>
+
+
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete essay_question
+			where id = #{id}
+		]]>
+	</delete>
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  @author NguyenDoanNam  -->
+<!-- create SQL Mapper -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapperAdmin.AnswerEssayMapper"> <!-- like package -->
+	<!-- no need loop resultSet -->
+	<resultMap type="answerEssayAdminVO" id="answerEssayResult">
+		<result property="id" column="id"/>
+		<result property="answerContent" column="answerContent"/>
+        <association property="essay" column="essayId" javaType="essayAdminVO" 
+            select="mapperAdmin.essayQuestionMapper.selectbyId" />
+	</resultMap>
+	<!-- make sql statement -->
+	
+	<!-- List<Book> books = selectAll -->
+	<select id="selectAll" resultMap="answerEssayResult"> 
+		<![CDATA[
+			select * from answer_essayq
+		]]>
+	</select>
+	<select id="selectbyId" resultMap="answerEssayResult" parameterType="int">
+		<![CDATA[
+			select * from answer_essayq
+			where answer_essayq.id = #{id}
+		]]>
+	</select>
+
+</mapper>
+
+

@@ -1,0 +1,79 @@
+body{
+	background: #F2EFFB;
+	
+}
+
+.container{
+	margin-left: 350px;
+	margin-bottom:200px;
+	background: #fff;
+	width: 990px;
+	padding: 60px 100px;
+	box-shadow: 10px 5px 8px #848484;
+	
+	
+}
+
+.title{
+font-family: cursive;
+font-size: 35px;
+color: #5e0655;
+font-weight: 600;
+	text-align: center;
+	
+}
+
+.time-name{
+	font-size: 20px;
+	font-family: cursive;
+	text-align: center;	
+	margin-top: -10px;
+}
+
+.test-name{
+font-size: 18px;	
+	text-align: center;
+	margin-top: -15px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.test-span{
+	font-family: cursive;
+	font-size: 25px;
+}
+	
+
+.timer-count{
+	margin-top: -2px;
+}
+
+.question-content{
+	margin: 30px;
+	padding: 20px;
+	width: 900px;
+	background: #F8FBEF;
+	box-shadow: 6px 6px 18px #F8FBEF;
+	
+}	
+
+#submit-btn{
+	border: none;
+	padding: 12px 25px;
+	background: #5e0655;
+	color: #fff;
+	margin-left: 885px;
+	
+}
+
+#submit-btn:hover{
+	background: #7F1C75;
+}
+
+.question-ask{
+	color: #5e0655;
+	font-size: 17px;
+	font-weight: bold;
+	
+}
+	

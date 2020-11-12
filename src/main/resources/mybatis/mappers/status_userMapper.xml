@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mappers.status_userMapper"> <!--like package of class -->
+	<!--no need loop result set -->
+	<resultMap type="statusUserVO" id="status_userResult">
+		<result property="id" column="id" />
+		<result property="userId" column="userId" />
+		<result property="status_id" column="status_id" />
+	</resultMap>
+
+	<!--make sql statement -->
+	<select id="selectAllByUserID" resultMap="status_userResult"
+		parameterType="int">
+		<![CDATA[
+			select * from status_user
+			where userId = #{userId}
+		]]>
+	</select>
+	
+	<select id="selectAll" resultMap="status_userResult">
+		<![CDATA[  
+			select * from status_user
+		]]>
+	</select>
+	<select id="selectOne" resultMap="status_userResult"
+		parameterType="int">
+		<![CDATA[
+			select * from status_user
+			where id = #{id}
+		]]>
+	</select>
+
+	<insert id="insert" parameterType="statusUserVO"
+		useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into status_user (statusName)
+			values (#{statusName})
+		]]>
+	</insert>
+
+	<update id="update" parameterType="statusUserVO">
+	<![CDATA[
+			update status_user
+			set statusName =#{statusName},
+			where id=#{id}	
+		]]>
+	</update>
+
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete status_user
+			where id = #{id}
+		]]>
+	</delete>
+	
+</mapper>

@@ -1,0 +1,287 @@
+@charset "ISO-8859-1";
+
+/*================common================*/
+body {
+	background-color: #dddddd85 !important;
+}
+
+* {
+	color: #686f7a;
+	font-family: sf pro text, -apple-system, BlinkMacSystemFont, Roboto,
+		segoe ui, Helvetica, Arial, sans-serif, apple color emoji,
+		segoe ui emoji, segoe ui symbol;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none !important;
+	color: #505763 !important;
+}
+
+/*================header================*/
+header {
+	color: #fff;
+	background: #52143e;
+}
+
+.header-container {
+	height: 5vh;
+	width: 100%;
+	display: flex;
+}
+
+.header-left {
+	height: 5vh;
+	width: 80%;
+	line-height: 5vh;
+}
+
+.header-left ul {
+	margin: 0;
+	padding: 0;
+}
+
+.header-left ul li {
+	display: inline-block;
+	color: #fff;
+}
+
+.header-left ul li {
+	position: relative;	
+}
+
+.header-left ul li i {
+	display: inline-block;
+	position: absolute;
+	top: 4px;
+}
+
+.header-left ul li:first-child i {
+	
+}
+
+.header-left ul li:first-child a {
+	padding-left: 15px;
+	color: #fff;
+	white-space: nowrap;
+	text-decoration: none;
+	margin-left: 15px;
+}
+
+.header-left ul li:nth-child(2) {
+	margin-left: 16px;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.header-left ul li:nth-child(3) {
+	margin-left: 16px;
+	margin-top: 2px;
+	margin-right: 16px;
+	font-size: 12px;
+	text-transform: uppercase;
+}
+
+.header-right {
+	height: 5vh;
+	width: 20%;
+	line-height: 5vh;
+}
+
+.header-right .setting {
+	vertical-align: middle;
+}
+
+.btn {
+	padding: 11px 12px;
+	font-weight: 700;
+	margin-right: 10px;
+}
+
+#btnPreview {
+	border: 1px solid #fff;
+	font-weight: 700;
+	color: #fff;
+}
+
+#btnSave {
+	font-weight: 700;
+	background-color: #f2f3f5 !important;
+}
+
+/*================section================*/
+section {
+	width: 100%;
+	overflow: hidden;
+	margin: 0 auto;
+	margin-top: 50px;
+	max-width: 95%;
+}
+
+.section-left {
+	width: 20%;
+	display: inline-block;
+	float: left;
+	margin-top: 50px;
+}
+
+.section-left>div {
+	margin-bottom: 30px;
+}
+
+.section-left input[type='checkbox']{
+	background-color: #fafafa;
+	border: 1px solid #cacece;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+	padding: 9px;
+	border-radius: 3px;
+	display: inline-block;
+	position: relative;
+}
+
+.section-left #btnSubmit {
+	color: #fff;
+    background-color: #ec5252;
+}
+
+.section-right {
+	width: 80%;
+	display: inline-block;
+	background: #fff;
+    box-shadow: 0 2px 8px 2px rgba(20,23,28,.15);
+}
+
+.section-right * {
+	color: #29303b;
+}
+
+.section-right h2 {
+	margin: 0;
+    padding: 30px 45px;
+    border-bottom: 1px solid #ddd;
+}
+
+.section-right .course-info {
+	padding: 30px 45px;
+}
+
+.title-container {
+	text-align: center;
+	position: relative;
+}
+
+.counter {
+	display: inline;
+	padding: 5px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	background-color: #dedfe0;
+	font-weight: 700;
+}
+
+.section-right .course-info label {
+	margin-bottom: 5px;	
+}
+
+.section-right .course-info #courseTitle {
+	margin-bottom: 15px;
+	height: 44px;
+    display: block;
+    width: 100%;
+}
+
+.section-right .course-info #courseDescription {
+	margin-bottom: 15px;
+    display: block;
+    width: 100%;
+    outline: none;
+    padding: 10px 12px;
+}
+
+.section-right .course-info #courseDescription:hover {
+	border-color: #76c5d6;
+}
+
+.section-right .form-layout {
+	 padding: 10px 12px;
+	 width: 30%;
+	 outline: none;
+}
+
+.section-right .form-layout:hover {
+	border-color: #76c5d6;
+}
+
+
+.image-area {
+	margin-top: 50px;
+}
+.upload {
+	display: flex;
+}
+
+.upload .left {
+	width: 50%;
+	height: 100%;
+}
+
+.upload .left img {
+	width: 100%;
+}
+
+.upload .right {
+	width: 50%;
+	margin-left: 30px;
+}
+
+.image .right .upload-image-container {
+	position: relative;
+}
+
+.video .right .upload-video-container {
+	position: relative;
+}
+
+.upload .right label {
+	border: 1px solid #107791;
+	position: absolute;
+	right: 0;
+	margin: 0;
+    width: auto;
+    color: #107791;
+    background-color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.image .no-file {
+	width: 100%;
+	background-color: #dddddd85;
+	border: 1px solid darkgrey;
+}
+
+.video .no-file {
+	width: 100%;
+	background-color: #dddddd85;
+	border: 1px solid darkgrey;
+}
+
+.video {
+	
+}
+
+#upload-file {
+	visibility: hidden;
+}
+
+input[type='file'] {
+	display: none !important;
+}
+
+/*================section================*/
+footer {
+	height: 30vh;
+	

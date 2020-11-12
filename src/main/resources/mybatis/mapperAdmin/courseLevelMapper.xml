@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- create SQL Mapper -->
+<!--  @author NguyenDoanNam  -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapperAdmin.courseLevelMapper"> <!-- like package -->
+	<!-- no need loop resultSet -->
+	<resultMap type="courseLevelAdminVO" id="courseLevelResult">
+		<result property="id" column="id"/>
+		<result property="levelName" column="levelName"/>
+	</resultMap>
+	<!-- make sql statement -->
+	
+	<!-- List<Book> books = selectAll -->
+	<select id="selectAll" resultMap="courseLevelResult"> 
+		<![CDATA[
+			select * from course_level
+		]]>
+	</select>
+	<select id="selectbyId" resultMap="courseLevelResult" parameterType="int">
+		<![CDATA[
+			select * from course_level
+			where course_level.id = #{id}
+		]]>
+	</select>
+		<insert id="insert" parameterType="courseLevelAdminVO">
+		<![CDATA[
+			insert into course_level(levelName)
+			values (#{levelName})
+		]]>
+	</insert>
+	<update id="update" parameterType="courseLevelAdminVO">
+		UPDATE course_level SET
+		levelName = #{levelName}
+		WHERE course_level.id = #{id};
+	</update>
+	<delete id = "deleteById" parameterType = "int">
+      DELETE from course_level WHERE course_level.id = #{id};
+   </delete>
+
+</mapper>

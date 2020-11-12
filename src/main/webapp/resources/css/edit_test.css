@@ -1,0 +1,36 @@
+.section-container{
+	margin-left: 90px;
+}
+
+.edit-title{
+	font-family:cursive;
+letter-spacing: 2px;
+font-size: 32px;
+color: #5e0655;
+width:70%;
+padding:0;
+margin-bottom:30px;
+ box-shadow: 8px 10px 10px #888888;
+}
+
+.container-course{
+	padding: 5px 0;
+}
+
+.section-title{
+	color: #FFBF00;
+	margin-left: 50px;
+	font-size: 20px;
+	
+}
+
+.test-title{
+	color: #73726c;
+	margin-left: 70px;
+	
+}
+
+.test-title:hover{
+	color: #5882FA;
+	
+}

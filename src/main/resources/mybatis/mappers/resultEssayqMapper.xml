@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mappers.resultEssayqMapper"> <!--like package of class -->
+	<!--no need loop result set -->
+	<resultMap type="resultEssayqVO" id="resultEssayqResult">
+		<result property="id" column="id" />
+		<result property="score" column="score" />
+		<result property="userAnswer" column="userAnswer" />
+		<result property="times_do_test" column="times_do_test" />
+		<result property="comment" column="comment" />
+		<result property="essayQuestionId" column="essayQuestionId" />
+		<result property="userId" column="userId" />
+		<result property="testId" column="testId" />
+		
+		
+	</resultMap>
+
+	<!--make sql statement -->
+	<insert id="insert" parameterType="resultEssayqVO"
+		useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into resultessayq (score, userAnswer,times_do_test,comment,essayQuestionId, userId,testId)
+			values (#{score}, #{userAnswer}, #{times_do_test},#{comment},#{essayQuestionId}, #{userId},#{testId})
+		]]>
+	</insert>
+	
+	<select id="selectAllUserID_TestID" resultMap="resultEssayqResult">
+		<![CDATA[  
+			select * from resultessayq
+			WHERE userId=${userID} AND testId=${testID}
+		]]>
+	</select>
+	
+	<select id="selectAllTestNotMark" resultMap="resultEssayqResult">
+		<![CDATA[  
+			select * from resultessayq
+			where score<0 and testId=${testID} and userId=${userID}
+			order by id
+		]]>
+	</select>
+	
+	<select id="selectAllTestNotMarkByTestId" resultMap="resultEssayqResult">
+		<![CDATA[  
+			select * from resultessayq
+			where score < 0 and testId=#{testId}
+			order by id
+		]]>
+	</select>
+	
+	<select id="selectOneByQuestionId_TimesDoTest" resultMap="resultEssayqResult"
+		parameterType="int">
+		<![CDATA[
+			select * from resultessayq
+			where essayQuestionId = ${questionID} and times_do_test=${timesDoTest}
+		]]>
+	</select>
+	
+	<select id="selectOneByAll" resultMap="resultEssayqResult"
+		parameterType="int">
+		<![CDATA[
+			select * from resultessayq
+			where essayQuestionId = ${questionID} and times_do_test=${timesDoTest} and userId=${userID} and testId=${testID}
+		]]>
+	</select>
+	
+	<select id="selectAllResultEssay" resultMap="resultEssayqResult"
+		parameterType="int">
+		<![CDATA[
+			select * from resultessayq
+			where testId=${testID} and times_do_test=${timesDoTest} and userId=${userID}
+		]]>
+	</select>
+	
+	<update id="update" parameterType="resultEssayqVO">
+	<![CDATA[
+			update resultessayq
+			set score =#{score},
+				comment=#{comment}	
+			where id=#{id}	
+		]]>
+	</update>
+	
+	<!--make sql statement -->
+	
+	<!-- 
+	<select id="selectAllTimesDoTest" resultMap="resultEssayqResult">
+		<![CDATA[  
+			select * from resultessayq
+			WHERE userId=${userID} AND testId=${testID} AND times_do_test=${timesDoTest}
+			order by  multichoiceQuestionId,id;
+		]]>
+	</select> -->
+	
+	<select id="selectAll" resultMap="resultEssayqResult">
+		<![CDATA[  
+			select * from resultessayq
+		]]>
+	</select>
+	<select id="selectOne" resultMap="resultEssayqResult"
+		parameterType="int">
+		<![CDATA[
+			select * from resultessayq
+			where id = #{id}
+		]]>
+	</select>
+
+	
+
+	
+
+
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete resultessayq
+			where id = #{id}
+		]]>
+	</delete>
+	
+</mapper>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- create SQL Mapper -->
+<!--  @author NguyenDoanNam  -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapperAdmin.lessonMapper"> <!-- like package -->
+	<!-- no need loop resultSet -->
+	<resultMap type="lessonAdminVO" id="lessonResult">
+		<result property="id" column="id"/>
+		<result property="title" column="title"/>
+		<result property="urlvid" column="urlVid"/>
+		<result property="urlimg" column="urlImg"/>
+		<association property="section" column="sectionId"
+			javaType="sectionAdminVO" select="mapperAdmin.sectionMapper.selectbyId" />
+	</resultMap>
+	<!-- make sql statement -->
+	
+	<!-- List<Book> books = selectAll -->
+	<select id="selectAll" resultMap="lessonResult"> 
+		<![CDATA[
+			select * from lesson
+		]]>
+	</select>
+	<select id="selectbyId" resultMap="lessonResult" parameterType="int">
+		<![CDATA[
+			select * from lesson
+			where lesson.id = #{id}
+		]]>
+	</select>
+	<select id="selectbySessionId" resultMap="lessonResult" parameterType="int">
+		<![CDATA[
+			select * from lesson
+			where lesson.sectionId = #{section.id}
+		]]>
+	</select>
+    <insert id="insert" parameterType="userAdminVO">
+		<![CDATA[
+			insert into lesson (title,urlVid,urlImg,sectionId)
+			values (#{title},#{urlvid},#{roleName},#{section.id})
+		]]>
+	</insert>
+	<update id="update" parameterType="userAdminVO">
+		UPDATE lesson SET
+		title = #{title}
+		urlVid = #{urlvid}
+		urlImg = #{roleName}
+		sectionId = #{section.id}				
+		WHERE lesson.id = #{id};
+	</update>
+	<delete id = "deleteById" parameterType = "int">
+      DELETE from lesson WHERE lesson.id = #{id};
+   </delete>
+</mapper>

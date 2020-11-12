@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.contain-back-btn{
+	margin-top: 20px;
+}
+
+.back-btn{
+	padding: 10px 22px;
+	background: #52143e;
+	color: white;
+	margin-top: 50px;
+	letter-spacing: 1px;
+	
+}
+
+.back-btn:hover{
+	background: #7a127a;
+}
+
+
+

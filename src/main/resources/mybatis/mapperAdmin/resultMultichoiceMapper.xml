@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- create SQL Mapper -->
+<!--  @author NguyenDoanNam  -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapperAdmin.result_multichoiceMapper"> <!-- like package -->
+	<!-- no need loop resultSet -->
+	<resultMap type="resultMultichoiceAdminVO" id="result_multichoiceResult">
+		<result property="id" column="id"/>
+		<result property="score" column="score"/>
+		<association property="multichoice" column="multichoiceId" javaType="multiChoiceAdminVO"
+            select="mapperAdmin.multiChoiseMapper.selectById" />
+        <association property="instructor" column="instructorId" javaType="instructorAdminVO" 
+            select="mapperAdmin.instructorMapper.selectId" />
+        <association property="user" column="userId" javaType="userAdminVO" 
+            select="mapperAdmin.userMapper.selectbyId" />
+	</resultMap>
+	
+	<select id="selectAll" resultMap="result_multichoiceResult"> 
+		<![CDATA[
+			select * from result_multichoice
+		]]>
+	</select>
+   
+</mapper>

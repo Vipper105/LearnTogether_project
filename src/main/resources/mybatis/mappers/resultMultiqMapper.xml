@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mappers.resultMultiqMapper"> <!--like package of class -->
+	<!--no need loop result set -->
+	<resultMap type="resultmultiqVO" id="resultMultiqResult">
+		<result property="id" column="id" />
+		<result property="score" column="score" />
+		<result property="userAnswer" column="userAnswer" />
+		<result property="times_do_test" column="times_do_test" />
+		<result property="multichoiceQuestionId" column="multichoiceQuestionId" />
+		<result property="userId" column="userId" />
+		<result property="testId" column="testId" />
+		
+	</resultMap>
+
+	<!--make sql statement -->
+	<insert id="insert" parameterType="resultmultiqVO"
+		useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into resultmultiq (score, userAnswer,times_do_test ,multichoiceQuestionId, userId,testId)
+			values (#{score}, #{userAnswer}, #{times_do_test},#{multichoiceQuestionId}, #{userId},#{testId})
+		]]>
+	</insert>
+	
+	<select id="selectAllUserID_TestID" resultMap="resultMultiqResult">
+		<![CDATA[  
+			select * from resultmultiq
+			WHERE userId=${userID} AND testId=${testID}
+		]]>
+	</select>
+	
+	<select id="selectAllTimesDoTest" resultMap="resultMultiqResult">
+		<![CDATA[  
+			select * from resultmultiq
+			WHERE userId=${userID} AND testId=${testID} AND times_do_test=${timesDoTest}
+			order by  multichoiceQuestionId,id;
+		]]>
+	</select>
+	
+	<select id="selectAll" resultMap="resultMultiqResult">
+		<![CDATA[  
+			select * from resultmultiq
+		]]>
+	</select>
+	<select id="selectOne" resultMap="resultMultiqResult"
+		parameterType="int">
+		<![CDATA[
+			select * from resultmultiq
+			where id = #{id}
+		]]>
+	</select>
+
+	
+
+	<update id="update" parameterType="resultmultiqVO">
+	<![CDATA[
+			update resultmultiq
+			set score =#{score},
+				userAnswer = #{userAnswer},
+				times_do_test=#{times_do_test},
+				multichoiceQuestionId = #{multichoiceQuestionId},
+				userId = #{userId},
+				testId=#{testId}
+				
+			where id=#{id}	
+		]]>
+	</update>
+
+
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete resultmultiq
+			where id = #{id}
+		]]>
+	</delete>
+	
+</mapper>

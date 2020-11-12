@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- create SQL Mapper -->
+<!--  @author NguyenDoanNam  -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapperAdmin.promotionCourseMapper"> <!-- like package -->
+	<!-- no need loop resultSet -->
+	<resultMap type="promotionCourseAdminVO" id="promotionCourseResult">
+		<result property="id" column="id" />
+		<result property="updatedate" column="updateDate" />
+		<result property="pricediscount" column="priceDiscount" />
+	    <association property="promotion" column="promotionId" javaType="promotionAdminVO" select="mapperAdmin.promotionMapper.selectId" />
+		<association property="course" column="courseId" javaType="courseAdminVO" select="mapperAdmin.courseMapper.selectId" />
+		
+	</resultMap>
+	<!-- make sql statement -->
+
+	<!-- List<Book> books = selectAll -->
+	<select id="selectAll" resultMap="promotionCourseResult"> 
+		<![CDATA[
+			select * from promotion_course
+		]]>
+	</select>
+	<select id="selectbyId" resultMap="promotionCourseResult"
+		parameterType="int">
+		<![CDATA[
+			select * from promotion_course
+			where promotion_course.id = #{id}
+		]]>
+	</select>
+
+</mapper>

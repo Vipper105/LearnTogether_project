@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+#title-content{
+font-family:cursive;
+letter-spacing: 2px;
+font-size: 32px;
+color: #5e0655;
+width:80%;
+padding:0;
+margin-bottom:30px;
+ box-shadow: 8px 10px 10px #888888;
+}
+
+.contain-course{
+margin-top: 10px;
+}
+
+.section-container{
+margin-top:-60px;
+margin-left: 30px;
+width: 80%;
+background: #FFFFFA;
+padding: 30px;
+position: relative;
+}
+
+#note-contain{
+position: fixed;
+top: 52px;
+right: 180px;
+padding: 22px 30px;
+background: #f7f9ff;
+}
+
+.show-test{
+margin-left: 55px;
+}
+
+.essay-test{
+color: white;
+padding: 3px 6px;	
+margin: 5px 10px;
+margin-left:20px;
+background-color: green;
+border-radius: 10px;
+}
+
+.multichoice-test{
+color: white;
+padding: 3px 9px;
+background-color: pink;
+border-radius: 10px;
+margin: 5px 10px;
+margin-left: 20px;
+}
+
+.test-mark{
+margin-bottom: 8px;
+
+}
+
+.title-test{
+color: #73726c;
+margin-left: 15px;
+}
+
+.title-test:hover{
+color: skyblue;
+}
+
+.no-mark{
+color: white;
+padding: 3px 9px;
+background-color: skyblue;
+border-radius: 10px;
+margin: 5px 10px;
+}
+
+.mark-essay{
+color: white;
+padding: 3px 9px;
+background-color: red;
+border-radius: 10px;
+margin: 5px 10px;
+}
+
+.section{
+color: orange;
+font-size: 20px;
+margin-left: 50px;
+}

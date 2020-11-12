@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mappers.courseOrderMapper"> <!--like package of class-->
+	<!--no need loop result set-->
+	<resultMap type="courseOrderVO" id="courseOrderResult">
+		<result property="id" column="id" />
+		<result property="courseId" column="courseId"/>
+		<result property="orderId" column="orderId" />
+		<result property="quantity" column="quantity" />
+	</resultMap>
+	
+	<!--make sql statement-->
+	
+	<select id="selectAll" resultMap="courseOrderResult">
+		<![CDATA[
+			select * from course_order
+		]]>
+	</select>
+	
+	<select id="selectOne" resultMap="courseOrderResult" parameterType="int">
+		<![CDATA[
+			select * from course_order
+			where order_itemID = #{orderitemID}
+		]]>
+	</select>
+	
+	<!-- query list cart -->
+	<select id="selectCoursesOrderID" resultMap="courseOrderResult" parameterType="int">
+		<![CDATA[
+			SELECT course_id FROM course_order WHERE order_id = ${orderid}
+		]]>
+	</select>
+	
+	
+	<insert id="insert" parameterType="courseOrderVO" useGeneratedKeys="true" keyProperty="orderItemId">
+		<![CDATA[
+			insert into course_order (courseId, orderId, quantity)
+			values (#{courseId}, #{orderId}, #{quantity})
+		]]>
+	</insert>
+	
+	<update id="update" parameterType="courseOrderVO">
+	<![CDATA[
+			update course_order set course_id = #{courseid},
+				orderid = #{order_id},
+			where id = #{id}
+		]]>
+	</update>
+	
+	
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete course_order
+			where id = #{id}
+		]]>
+	</delete>
+	 
+	
+	
+</mapper>

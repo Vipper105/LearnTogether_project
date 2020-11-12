@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- create SQL Mapper -->
+<!--  @author NguyenDoanNam  -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapperAdmin.sectionMapper"> <!-- like package -->
+	<!-- no need loop resultSet -->
+	<resultMap type="sectionAdminVO" id="sectionResult">
+		<result property="id" column="id"/>
+		<result property="title" column="title"/>
+		<result property="description" column="description"/>
+		<association property="course" column="courseId"
+			javaType="courseAdminVO" select="mapperAdmin.courseMapper.selectbyId" />
+	</resultMap>
+	<!-- make sql statement -->
+	
+	<!-- List<Book> books = selectAll -->
+	<select id="selectAll" resultMap="sectionResult"> 
+		<![CDATA[
+			select * from section
+		]]>
+	</select>
+	<select id="selectbyId" resultMap="sectionResult" parameterType="int">
+		<![CDATA[
+			select * from section
+			where section.id = #{id}
+		]]>
+	</select>
+	<select id="selectbyCourseId" resultMap="sectionResult" parameterType="int">
+		<![CDATA[
+			select * from section
+			where section.courseId = #{courseId}
+		]]>
+	</select>
+</mapper>

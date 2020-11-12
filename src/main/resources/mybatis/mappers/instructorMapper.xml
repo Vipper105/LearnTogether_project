@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mappers.instructorMapper"> <!--like package of class-->
+	<!--no need loop result set-->
+	<resultMap type="instructorVO" id="instructorResult">
+		<result property="id" column="id" />
+		<result property="userId" column="userId" />
+		<result property="experienceYear" column="experienceYear" />
+		<result property="numStudent" column="numStudent" />
+		<result property="rateValue" column="rateValue" />
+		<result property="skillLevel" column="skillLevel" />
+	</resultMap>
+    
+	<!--make sql statement-->
+	<select id="selectAll" resultMap="instructorResult">
+		<![CDATA[
+			select * from instructor
+		]]>
+	</select>
+	<select id="selectOne" resultMap="instructorResult" parameterType="int">
+		<![CDATA[
+			select * from instructor
+			where id = #{id}
+		]]>
+	</select>
+	
+	<select id="selectInstructorByUserID" resultMap="instructorResult" parameterType="int">
+		<![CDATA[
+			select * from instructor
+			where userId = #{userId}
+		]]>
+	</select>
+	
+	<insert id="insert" parameterType="instructorVO" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into instructor (userId, experienceYear, numStudent, rateValue, skillLevel)
+			values (#{userId}, #{experienceYear}, #{numStudent}, #{rateValue}, #{skillLevel})
+		]]>
+	</insert>
+	
+	<update id="update" parameterType="instructorVO">
+	<![CDATA[
+			update instructor
+			set experienceYear =#{experienceYear},
+				skillLevel = #{skillLevel},
+				bkphone = #{bkphone},
+				bknum = #{bknum}
+			where id = #{id}
+		]]>
+	</update>
+	
+</mapper>

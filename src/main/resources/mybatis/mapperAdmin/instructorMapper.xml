@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- create SQL Mapper -->
+<!--  @author NguyenDoanNam  -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapperAdmin.instructorMapper"> <!-- like package -->
+	<!-- no need loop resultSet -->
+	<resultMap type="instructorAdminVO" id="instructorResult">
+		<result property="id" column="id" />
+		<result property="experienceyear" column="experienceYear" />
+		<result property="numstudent" column="numStudent" />
+		<result property="ratevalue" column="rateValue" />
+		<result property="skilllevel" column="skillLevel" />
+		<result property="urlimg" column="urlImg" />
+		<result property="aboutMe" column="about_me" />
+		<association property="user" column="userId"
+			javaType="userAdminVO" select="mapperAdmin.userMapper.selectbyId" />
+	</resultMap>
+	<!-- make sql statement -->
+
+	<!-- List<Book> books = selectAll -->
+	<select id="selectAll" resultMap="instructorResult"> 
+		<![CDATA[
+			select * from instructor
+		]]>
+	</select>
+	<select id="selectbyId" resultMap="instructorResult"
+		parameterType="int"> 
+		<![CDATA[
+			SELECT * FROM instructor where instructor.id = #{id};
+		]]>
+	</select>
+	<insert id="insert" parameterType="instructorAdminVO">
+		<![CDATA[
+			insert into instructor (experienceYear,numStudent,rateValue,skillLevel,urlImg,about_me,userId)
+			values (#{experienceyear},#{numstudent},#{ratevalue},#{skilllevel},#{urlimg},#{aboutMe},#{user.id})
+		]]>
+	</insert>
+	<update id="update" parameterType="instructorAdminVO">
+		UPDATE instructor SET 
+		experienceYear = #{experienceyear},
+		numStudent = #{numstudent},
+		rateValue = #{ratevalue},
+		skillLevel = #{skilllevel},
+		urlImg = #{urlimg},
+		about_me = #{aboutMe},
+		userId = #{user.id},
+		WHERE instructor.id = #{id};
+	</update>
+</mapper>

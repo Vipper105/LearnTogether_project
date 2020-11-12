@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mappers.lessonMapper"> <!--like package of class-->
+	<!--no need loop result set-->
+	<resultMap type="lessonVO" id="lessonResult">
+		<result property="id" column="id" />
+		<result property="title" column="title"/>
+		<result property="description" column="description"/>
+		<result property="videoDuration" column="videoDuration"/>
+		<result property="urlVid" column="urlVid"/>
+		<result property="sectionId" column="sectionId"/>
+		<result property="urlImg" column="urlImg"/>
+	</resultMap>
+	
+	<!--make sql statement-->
+	<select id="selectAll" resultMap="lessonResult">
+		<![CDATA[
+			select * from lesson
+		]]>
+	</select>
+	
+	<select id="selectOne" resultMap="lessonResult" parameterType="int">
+		<![CDATA[
+			select * from lesson
+			where id = #{id}
+		]]>
+	</select>
+	
+	<select id="getLessonsBySectionID" resultMap="lessonResult" parameterType="int">
+		<![CDATA[
+			select * from lesson
+			where sectionId = #{sectionId}
+		]]>
+	</select>
+	
+	<select id="calculateTotalVideoDurationByCourseID" resultType="int" parameterType="int">
+		<![CDATA[
+			SELECT SUM(lesson.videoDuration)
+			FROM course INNER JOIN section
+			ON course.id = section.courseId
+			INNER JOIN lesson
+			ON lesson.sectionId = section.id
+			WHERE course.id = #{course.id}
+		]]>
+	</select>
+	
+	<insert id="insert" parameterType="lessonVO" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into lesson (title, description, videoDuration, urlVid, sectionId, urlImg)
+			values (#{title}, #{description}, #{videoDuration}, #{urlVid}, #{sectionId}, #{urlImg})
+		]]>
+	</insert>
+	
+	<update id="update" parameterType="lessonVO">
+	<![CDATA[
+			update lesson
+			set title = #{title},
+			description = #{description},
+			urlVid = #{urlVid},
+			videoDuration = #{videoDuration},
+			urlImg = #{urlImg}
+			where id = #{id}
+		]]>
+	</update>
+
+	<update id="updateVideoURLByID" parameterType="lessonVO">
+	<![CDATA[
+			update lesson
+			urlVid = #{urlVid},
+			where id = #{id}
+		]]>
+	</update>
+
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete from lesson
+			where id = #{id}
+		]]>
+	</delete>
+	
+</mapper>

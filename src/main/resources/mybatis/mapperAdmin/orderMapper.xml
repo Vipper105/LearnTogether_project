@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- create SQL Mapper -->
+<!--  @author NguyenDoanNam  -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapperAdmin.ordersMapper"> <!-- like package -->
+	<!-- no need loop resultSet -->
+	<resultMap type="orderAdminVO" id="ordersResult">
+		<result property="id" column="id" />
+		<result property="createdate" column="createDate" />
+		<result property="totalamount" column="totalAmount" />
+		<result property="status" column="status" />
+		<association property="user" column="user_id" javaType="userAdminVO" select="mapperAdmin.userMapper.selectbyId" />
+	</resultMap>
+	<!-- make sql statement -->
+
+	<!-- List<Book> books = selectAll -->
+	<select id="selectAll" resultMap="ordersResult"> 
+		<![CDATA[
+			select * from orders
+		]]>
+	</select>
+	<select id="selectbyId" resultMap="ordersResult"
+		parameterType="int"> 
+		<![CDATA[
+			SELECT * FROM orders where orders.id = #{id};
+		]]>
+	</select>
+	<select id="selectSumOrder" resultType="Integer"> 
+		<![CDATA[
+			SELECT Sum(totalAmount) FROM orders;
+		]]>
+	</select>
+	<select id="selectYear" resultType="Integer"> 
+		<![CDATA[
+			SELECT DISTINCT YEAR(createDate) FROM orders;
+		]]>
+	</select>
+	<select id="selectOrderByYear" resultType="Integer"> 
+		<![CDATA[
+			SELECT SUM(totalAmount) FROM orders WHERE MONTH(createDate)= #{month} AND YEAR(createDate)= #{year} ;
+		]]>
+	</select>
+</mapper>

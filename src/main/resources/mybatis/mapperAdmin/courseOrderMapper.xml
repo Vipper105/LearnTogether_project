@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- create SQL Mapper -->
+<!--  @author NguyenDoanNam  -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapperAdmin.courseOrderMapper"> <!-- like package -->
+	<!-- no need loop resultSet -->
+	<resultMap type="courseOrderAdminVO" id="courseOrderResult">
+		<result property="id" column="id" />
+		<result property="quantity" column="quantity" />
+		<association property="course" column="courseId" javaType="courseAdminVO" select="mapperAdmin.courseMapper.selectbyId" />
+		<association property="order" column="orderId" javaType="orderAdminVO" select="mapperAdmin.ordersMapper.selectbyId" />
+	</resultMap>
+	<!-- make sql statement -->
+
+	<!-- List<Book> books = selectAll -->
+	<select id="selectAll" resultMap="courseOrderResult"> 
+		<![CDATA[
+			select * from course_order
+		]]>
+	</select>
+	<select id="selectbyId" resultMap="courseOrderResult"
+		parameterType="int"> 
+		<![CDATA[
+			SELECT * FROM course_order where course_order.id = #{id};
+		]]>
+	</select>
+</mapper>

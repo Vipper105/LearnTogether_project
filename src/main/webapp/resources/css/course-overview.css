@@ -1,0 +1,92 @@
+@charset "ISO-8859-1";
+
+/*================common================*/
+body {
+	background-color: #dddddd85 !important;
+}
+
+ul {
+	list-style: none;
+}
+
+* {
+	color: #686f7a;
+	font-family: sf pro text, -apple-system, BlinkMacSystemFont, Roboto,
+		segoe ui, Helvetica, Arial, sans-serif, apple color emoji,
+		segoe ui emoji, segoe ui symbol;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none !important;
+	color: #505763 !important;
+}
+
+/*================header================*/
+
+
+
+/*================section================*/
+section {
+	margin: 5vh auto;
+	max-width: 1200px;
+	border: 1px solid black;
+	height: 100vh;
+}
+
+.section-header {
+	background-color: #1e1e1c;
+    padding-bottom: 3.2rem;
+}
+
+.section-header * {
+	color: #fff;
+}
+
+.section-header button {
+	background-color: #1e1e1c;
+}
+
+.section-header h2 {
+	font-size: 2.2rem;
+    margin-bottom: .8rem;
+}
+
+/* svg {
+	width: 24px;
+	height: 24px;
+}
+ */
+ .card-header button {
+ 	overflow: hidden;
+ 	display: block;
+    width: 100%;
+    text-align: left;
+ }
+ 
+.section-left {
+	display: inline-block;
+	width: 70%;
+}
+
+.section-right {
+	display: inline-block;
+	width: 29%;
+}
+
+.card-body {
+	overflow: hidden;
+}
+
+.card-body .lesson-left {
+	display: inline-block;
+	width: 70%;
+}
+
+.card-body .lesson-right {
+	display: inline-block;
+	width: 29%;
+}
+/*================footer================*/

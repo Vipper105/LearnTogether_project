@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- create SQL Mapper -->
+<!-- @author NguyenDoanNam -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapperAdmin.categoryMapper"> <!-- like package -->
+	<!-- no need loop resultSet -->
+	<resultMap type="categoryAdminVO" id="categoryResult">
+		<result property="id" column="id" />
+		<result property="categoryName" column="categoryName" />
+		<result property="urlimg" column="urlimg" />
+	</resultMap>
+	<!-- make sql statement -->
+
+	<!-- List<Book> books = selectAll -->
+	<select id="selectAll" resultMap="categoryResult"> 
+		<![CDATA[
+			select * from category
+		]]>
+	</select>
+	<select id="selectbyId" resultMap="categoryResult"
+		parameterType="int">
+		<![CDATA[
+			select * from category
+			where category.id = #{id}
+		]]>
+	</select>
+	<insert id="insert" parameterType="categoryAdminVO">
+		<![CDATA[
+			insert into category(categoryName)
+			values (#{categoryName})
+		]]>
+	</insert>
+	<update id="update" parameterType="categoryAdminVO">
+		UPDATE category SET
+		categoryName = #{categoryName}
+		WHERE category.id = #{id};
+	</update>
+	<delete id="deleteById" parameterType="int">
+		DELETE from category WHERE category.id = #{id};
+	</delete>
+	
+	
+
+</mapper>

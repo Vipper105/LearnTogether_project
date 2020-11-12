@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mappers.promotionCourseMapper"> <!--like package of class-->
+	<!--no need loop result set-->
+	<resultMap type="promotionCourseVO" id="promotionCourseResult">
+		<result property="id" column="id" />
+		<result property="promotionId" column="promotionId" />
+		<result property="courseId" column="courseId" />
+		<result property="updatedate" column="updatedate" />
+		<result property="pricediscount" column="pricediscount" />
+		
+	</resultMap>
+	
+	<!--make sql statement-->
+	<select id="selectAll" resultMap="promotionCourseResult">
+		<![CDATA[
+			select * from promotion_course
+		]]>
+	</select>
+	<select id="selectOne" resultMap="promotionCourseResult" parameterType="int">
+		<![CDATA[
+			select * from promotion_course
+			where id = #{id}
+		]]>
+	</select>
+	
+	<insert id="insert" parameterType="promotionCourseVO" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into promotion_course (id, promotionId, courseId, updatedate,pricediscount )
+			values ( #{id}, #{promotionId}, #{courseId}, #{updatedate}, #{pricediscount})
+		]]>
+	</insert>
+	
+	<update id="update" parameterType="promotionCourseVO">
+	<![CDATA[
+			update promotion_course
+			set id =#{id},
+				promotionId = #{promotionId},
+				courseId = #{courseId},
+				updatedate = #{updatedate},
+				pricediscount = #{pricediscount},
+			
+		]]>
+	</update>
+	
+	
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete promotion_course
+			where id = #{id}
+		]]>
+	</delete>
+	
+</mapper>

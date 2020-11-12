@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mappers.invoiceMapper"> <!--like package of class-->
+	<!--no need loop result set-->
+	<resultMap type="invoiceVO" id="invoiceResult">
+		<result property="id" column="id" />
+		<result property="title" column="title"/>
+		<result property="urlVid" column="urlVid"/>
+		<result property="section_id" column="section_id"/>
+		<result property="urlImg" column="urlImg"/>
+	</resultMap>
+	
+	<!--make sql statement-->
+	<select id="selectAll" resultMap="invoiceResult">
+		<![CDATA[
+			select * from invoice
+		]]>
+	</select>
+	<select id="selectOne" resultMap="invoiceResult" parameterType="int">
+		<![CDATA[
+			select * from invoice
+			where id = #{id}
+		]]>
+	</select>
+	
+	<!-- <insert id="insert" parameterType="orderVO" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into order (orderName)
+			values (#{orderName})
+		]]>
+	</insert>
+	
+	<update id="update" parameterType="orderVO">
+	<![CDATA[
+			update order
+			set orderName =#{orderName},
+			where id = #{id}
+		]]>
+	</update>
+
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete order
+			where id = #{id}
+		]]>
+	</delete> -->
+	
+</mapper>

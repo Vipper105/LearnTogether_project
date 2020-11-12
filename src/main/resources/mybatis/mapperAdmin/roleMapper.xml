@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- create SQL Mapper -->
+<!--  @author NguyenDoanNam  -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapperAdmin.roleMapper"> <!-- like package -->
+	<!-- no need loop resultSet -->
+	<resultMap type="roleAdminVO" id="roleResult">
+		<result property="id" column="id"/>
+		<result property="roleName" column="roleName"/>
+	</resultMap>
+	<!-- make sql statement -->
+	
+	<!-- List<Book> books = selectAll -->
+	<select id="selectAll" resultMap="roleResult"> 
+		<![CDATA[
+			select * from role
+		]]>
+	</select>
+	<select id="selectbyId" resultMap="roleResult" parameterType="int">
+		<![CDATA[
+			select * from role
+			where role.id = #{id}
+		]]>
+	</select>
+		<insert id="insert" parameterType="userAdminVO">
+		<![CDATA[
+			insert into role (id,roleName)
+			values (#{id},#{roleName})
+		]]>
+	</insert>
+	<update id="update" parameterType="userAdminVO">
+		UPDATE role SET
+		roleName = #{roleName}
+		WHERE role.id = #{id};
+	</update>
+	<delete id = "deleteById" parameterType = "int">
+      DELETE from role WHERE role.id = #{id};
+   </delete>
+
+</mapper>

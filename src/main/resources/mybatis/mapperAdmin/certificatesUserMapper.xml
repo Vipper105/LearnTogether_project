@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- create SQL Mapper -->
+<!--  @author NguyenDoanNam  -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapperAdmin.certificatesUserMapper"> <!-- like package -->
+	<!-- no need loop resultSet -->
+	<resultMap type="certificatesUserAdminVO" id="certificatesUserResult">
+		<result property="id" column="id" />
+		<association property="certificate" column="certificateId"
+			javaType="certificateAdminVO" select="mapperAdmin.certificateMapper.selectbyId" />
+		<association property="user" column="userId"
+			javaType="userAdminVO" select="mapperAdmin.userMapper.selectbyId" />
+	</resultMap>
+	<!-- make sql statement -->
+
+	<select id="selectAll" resultMap="certificatesUserResult"> 
+		<![CDATA[
+			select * from certificates_user
+		]]>
+	</select>
+	<select id="selectbyId" resultMap="certificatesUserResult"
+		parameterType="int">
+		<![CDATA[
+			select * from certificates_user
+			where certificates_user.id = #{id}
+		]]>
+	</select>
+
+</mapper>

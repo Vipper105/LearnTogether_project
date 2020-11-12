@@ -1,0 +1,134 @@
+.container{
+	margin-left: 450px;
+	margin-top: 90px;
+	width: 990px;
+	
+		
+}
+
+.bg-form-1{	
+	background-color: #FBFBEF;	
+	padding: 20px 50px;
+}
+
+.essayq-test{
+	
+	
+}
+
+.question-title{
+	margin-bottom: 6px;
+	color: #a3392e;
+	font-size: 18px;
+	
+}
+
+.multiq-test{
+	width: 700px;
+	height: 25px;
+	margin-bottom: 10px;
+	
+}
+
+.answer-input{
+	margin-bottom: 5px;
+	width: 550px;
+	
+}
+
+.content-answer{
+	margin-bottom: 11px;
+	background: #faedfa;
+	padding: 12px 18px;
+	box-sizing: border-box;
+}
+
+#back-btn{
+	text-decoration: none;
+	padding: 5px 10px;
+	background: #52143e;
+	color: white;
+}
+
+#back-btn:hover{
+	background: #7f1991;
+	
+}
+
+.title{
+	font-size: 22px;
+	color: #52143e;
+	font-weight: 800;
+}
+
+.content-submit{
+	margin-bottom: 15px;
+	
+}
+
+.cancelbtn{
+	padding: 12px 20px;
+	background: #581de0;
+	color: white;
+	border: none;
+	font-size: 15px;
+	
+}
+
+.update-value{
+	padding: 12px 20px;
+	background: #581de0;
+	color: white;
+	border: none;
+	font-size: 15px;
+	
+}
+
+.cancelbtn:hover{
+	background: #6c3bdb;	
+}
+
+.update-value:hover{
+	background: #6c3bdb;
+	
+}
+
+.radio-btn{
+	margin-left: 6px;
+}
+
+.essayq-test{
+	margin-left: 55px;
+	width: 900px;
+	overflow:hidden; 
+	resize:none;
+	width: 600px;
+	height: 50px;
+	vertical-align: top;
+
+}
+
+.essayq-test-ans{
+	margin-left: 20px; 
+	overflow:hidden; 
+	resize:none;
+	width: 598px;
+	height: 70px;
+	vertical-align: top;
+	margin-right: 10px;
+	  
+	
+}
+
+.answer-content{
+	margin-bottom: 20px;
+	background: #faedfa;
+		
+}
+
+.text{
+	font-size: 16px;
+	font-weight: 500;
+	font-family: cursive;
+}
+

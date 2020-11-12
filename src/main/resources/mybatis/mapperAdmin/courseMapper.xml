@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- create SQL Mapper -->
+<!--  @author NguyenDoanNam  -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapperAdmin.courseMapper"> <!-- like package -->
+	<!-- no need loop resultSet -->
+	<resultMap type="courseAdminVO" id="courseResult">
+		<result property="id" column="id" />
+		<result property="coursetitle" column="courseTitle" />
+		<result property="description" column="description" />
+		<result property="pricecourse" column="priceCourse" />
+		<result property="language" column="language" />
+		<result property="numstudent" column="numStudent" />
+		<result property="createdate" column="createDate" />
+		<result property="lasteupdate" column="lasteUpdate" />
+		<result property="courseinfoId" column="courseInfoId" />
+		<result property="urlimg" column="urlImg" />
+		<result property="status" column="status" />
+		<result property="submit" column="submit" />
+		<association property="instructor" column="instructorId" javaType="instructorAdminVO" select="mapperAdmin.instructorMapper.selectbyId" />
+		<association property="category" column="categoryId" javaType="categoryAdminVO" select="mapperAdmin.categoryMapper.selectbyId" />
+		<association property="courseLevel" column="courseLevelId" javaType="courseLevelAdminVO" select="mapperAdmin.courseLevelMapper.selectbyId" />
+	</resultMap>
+	<!-- make sql statement -->
+
+	<!-- List<Book> books = selectAll -->
+	<select id="selectAll" resultMap="courseResult"> 
+		<![CDATA[
+			select * from course
+		]]>
+	</select>
+	<select id="selectCategory" resultType="HashMap"> 
+		<![CDATA[
+			SELECT DISTINCT category.categoryName as categoryName, SUM(course_order.quantity) as quantity FROM category, course, course_order WHERE  category.id = course.categoryId AND course.id = course_order.courseId GROUP BY category.categoryName
+	]]>
+	</select>
+	<select id="selectApprove" resultMap="courseResult"> 
+		<![CDATA[
+			select * from course where course.status = 0 and course.submit = 1;
+		]]>
+	</select>
+	<select id="selectbyId" resultMap="courseResult"
+		parameterType="int"> 
+		<![CDATA[
+			SELECT * FROM course where course.id = #{id};
+		]]>
+	</select>
+	<update id="approveCourse" parameterType="courseAdminVO">
+		UPDATE course SET 
+		status = 1
+		WHERE course.id = #{id};
+	</update>
+	<update id="noApproveCourse" parameterType="courseAdminVO">
+		UPDATE course SET 
+		submit = 0
+		WHERE course.id = #{id};
+	</update>
+</mapper>
