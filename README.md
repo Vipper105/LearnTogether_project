@@ -1,9 +1,6 @@
 # LearnTogether_project
 Project team about learning online website use Spring framework
 
-# LearnTogether_project
-Project team about learning online website use Spring framework
-
 Framework:
 
 
