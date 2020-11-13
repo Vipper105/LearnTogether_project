@@ -1,4 +1,4 @@
--- ÃƒÂ­Ã¢â‚¬Â¦Ã…â€™ÃƒÂ¬Ã¯Â¿Â½Ã‚Â´ÃƒÂ«Ã‚Â¸Ã¢â‚¬ï¿½ ÃƒÂ¬Ã‹â€ Ã…â€œÃƒÂ¬Ã¢â‚¬Å¾Ã…â€œÃƒÂ«Ã…Â Ã¢â‚¬ï¿½ ÃƒÂªÃ‚Â´Ã¢â€šÂ¬ÃƒÂªÃ‚Â³Ã¢â‚¬Å¾ÃƒÂ«Ã‚Â¥Ã‚Â¼ ÃƒÂªÃ‚Â³Ã‚Â ÃƒÂ«Ã‚Â Ã‚Â¤ÃƒÂ­Ã¢â‚¬Â¢Ã‹Å“ÃƒÂ¬Ã¢â‚¬â€�Ã‚Â¬ ÃƒÂ­Ã¢â‚¬Â¢Ã…â€œ ÃƒÂ«Ã‚Â²Ã‹â€ ÃƒÂ¬Ã¢â‚¬â€�Ã¯Â¿Â½ ÃƒÂ¬Ã¢â‚¬Â¹Ã‚Â¤ÃƒÂ­Ã¢â‚¬â€œÃ¢â‚¬Â°ÃƒÂ­Ã¢â‚¬Â¢Ã‚Â´ÃƒÂ«Ã¯Â¿Â½Ã¢â‚¬Å¾ ÃƒÂ¬Ã¢â‚¬â€�Ã¯Â¿Â½ÃƒÂ«Ã…Â¸Ã‚Â¬ÃƒÂªÃ‚Â°Ã¢â€šÂ¬ ÃƒÂ«Ã‚Â°Ã…â€œÃƒÂ¬Ã†â€™Ã¯Â¿Â½ÃƒÂ­Ã¢â‚¬Â¢Ã‹Å“ÃƒÂ¬Ã‚Â§Ã¢â€šÂ¬ ÃƒÂ¬Ã¢â‚¬Â¢Ã…Â ÃƒÂªÃ‚Â²Ã…â€™ ÃƒÂ¬Ã‚Â Ã¢â‚¬Â¢ÃƒÂ«Ã‚Â Ã‚Â¬ÃƒÂ«Ã¯Â¿Â½Ã‹Å“ÃƒÂ¬Ã¢â‚¬â€�Ã‹â€ ÃƒÂ¬Ã…Â Ã‚ÂµÃƒÂ«Ã¢â‚¬Â¹Ã‹â€ ÃƒÂ«Ã¢â‚¬Â¹Ã‚Â¤.
+-- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
 
 -- role Table Create SQL
 CREATE TABLE role
@@ -12,16 +12,22 @@ CREATE TABLE role
 -- role Table Create SQL
 CREATE TABLE user
 (
-    `id`         INT             NOT NULL    AUTO_INCREMENT, 
-    `email`      VARCHAR(255)    NOT NULL, 
-    `userName`   VARCHAR(255)    NOT NULL, 
-    `password`   VARCHAR(255)    NOT NULL, 
-    `fullName`   VARCHAR(255)    NULL, 
-    `address`    VARCHAR(255)    NULL, 
-    `amount`     DOUBLE          NULL, 
-    `birthDate`  DATE            NULL, 
-    `roleId`     INT             NOT NULL, 
-    `urlImg`     VARCHAR(255)    NULL, 
+    `id`           INT             NOT NULL    AUTO_INCREMENT, 
+    `email`        VARCHAR(255)    NOT NULL, 
+    `userName`     VARCHAR(255)    NOT NULL, 
+    `password`     VARCHAR(255)    NOT NULL, 
+    `fullName`     VARCHAR(255)    NULL, 
+    `address`      VARCHAR(255)    NULL, 
+    `amount`       DOUBLE          NULL, 
+    `birthDate`    DATE            NULL, 
+    `roleId`       INT             NOT NULL, 
+    `urlImg`       VARCHAR(255)    NULL, 
+    `amountAdmin`  DOUBLE          NOT NULL, 
+    `headLine`     VARCHAR(255)    NULL, 
+    `biography`    TEXT            NULL, 
+    `userNameFb`   VARCHAR(255)    NULL, 
+    `createDay`    DATETIME        NULL, 
+    `token`        VARCHAR(255)    NULL, 
     PRIMARY KEY (id)
 );
 
@@ -33,13 +39,12 @@ ALTER TABLE user
 -- role Table Create SQL
 CREATE TABLE instructor
 (
-    `id`              INT             NOT NULL    AUTO_INCREMENT, 
-    `userId`          INT             NOT NULL, 
-    `experienceYear`  INT             NULL, 
-    `numStudent`      INT             NULL, 
-    `rateValue`       INT             NULL, 
-    `skillLevel`      VARCHAR(45)     NULL, 
-    `about_me`        VARCHAR(255)    NULL, 
+    `id`              INT            NOT NULL    AUTO_INCREMENT, 
+    `userId`          INT            NOT NULL, 
+    `experienceYear`  INT            NULL, 
+    `numStudent`      INT            NULL, 
+    `rateValue`       INT            NULL, 
+    `skillLevel`      VARCHAR(45)    NULL, 
     PRIMARY KEY (id)
 );
 
@@ -67,22 +72,33 @@ CREATE TABLE course_level
 
 
 -- role Table Create SQL
+CREATE TABLE course_pricing
+(
+    `id`     INT              NOT NULL    AUTO_INCREMENT, 
+    `price`  DECIMAL(5, 2)    NOT NULL, 
+    PRIMARY KEY (id)
+);
+
+
+-- role Table Create SQL
 CREATE TABLE course
 (
-    `id`             INT            NOT NULL    AUTO_INCREMENT, 
-    `courseTitle`    VARCHAR(60)    NOT NULL, 
-    `description`    TEXT           NULL, 
-    `priceCourse`    DOUBLE         NOT NULL, 
-    `language`       VARCHAR(45)    NOT NULL, 
-    `courseLevelId`  INT            NULL, 
-    `numStudent`     INT            NULL, 
-    `createDate`     DATE           NOT NULL, 
-    `lastedUpdate`   DATE           NOT NULL, 
-    `instructorId`   INT            NOT NULL, 
-    `categoryId`     INT            NOT NULL, 
-    `urlImg`         VARCHAR(45)    NULL, 
-    `status`         BIT            NOT NULL    COMMENT '0: draft, 1: approved',
-    `submit`         BIT            NOT NULL    COMMENT '0: not yet, 1: submitted', 
+    `id`                  INT              NOT NULL    AUTO_INCREMENT, 
+    `courseTitle`         VARCHAR(60)      NOT NULL, 
+    `description`         LONGTEXT         NULL, 
+    `priceCourse`         DECIMAL(5, 2)    NOT NULL, 
+    `isFree`              BIT              NOT NULL    COMMENT '0: not free, 1: free', 
+    `language`            VARCHAR(45)      NOT NULL, 
+    `courseLevelId`       INT              NULL, 
+    `numStudent`          INT              NULL, 
+    `createDate`          DATE             NOT NULL, 
+    `lastedUpdate`        DATE             NOT NULL, 
+    `instructorId`        INT              NOT NULL, 
+    `categoryId`          INT              NULL, 
+    `urlImg`              VARCHAR(45)      NULL, 
+    `status`              BIT              NOT NULL    COMMENT '0: draft, 1: approved', 
+    `submit`              BIT              NOT NULL    COMMENT '0: not yet, 1: submitted', 
+    `totalVideoDuration`  INT              NULL, 
     PRIMARY KEY (id)
 );
 
@@ -98,14 +114,18 @@ ALTER TABLE course
     ADD CONSTRAINT FK_course_courseLevelId_course_level_id FOREIGN KEY (courseLevelId)
         REFERENCES course_level (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
+ALTER TABLE course
+    ADD CONSTRAINT FK_course_priceCourse_course_pricing_price FOREIGN KEY (priceCourse)
+        REFERENCES course_pricing (price) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
 
 -- role Table Create SQL
 CREATE TABLE section
 (
-    `id`           INT             NOT NULL    AUTO_INCREMENT, 
-    `title`        VARCHAR(45)     NOT NULL, 
-    `description`  VARCHAR(255)    NULL, 
-    `courseId`     INT             NOT NULL, 
+    `id`           INT         NOT NULL    AUTO_INCREMENT, 
+    `title`        LONGTEXT    NOT NULL, 
+    `description`  LONGTEXT    NULL, 
+    `courseId`     INT         NOT NULL, 
     PRIMARY KEY (id)
 );
 
@@ -126,13 +146,14 @@ CREATE TABLE test_type
 -- role Table Create SQL
 CREATE TABLE test
 (
-    `id`           INT             NOT NULL    AUTO_INCREMENT, 
-    `title`        VARCHAR(255)    NOT NULL, 
-    `numQuestion`  INT             NOT NULL, 
-    `score`        DOUBLE          NOT NULL, 
-    `sectionId`    INT             NOT NULL, 
-    `updateDate`   DATE            NOT NULL, 
-    `typeId`       INT             NOT NULL, 
+    `id`           INT         NOT NULL    AUTO_INCREMENT, 
+    `title`        LONGTEXT    NOT NULL, 
+    `numQuestion`  INT         NOT NULL, 
+    `score`        DOUBLE      NOT NULL, 
+    `sectionId`    INT         NOT NULL, 
+    `updateDate`   DATE        NULL, 
+    `typeId`       INT         NOT NULL, 
+    `test`         INT         NOT NULL, 
     PRIMARY KEY (id)
 );
 
@@ -164,9 +185,9 @@ ALTER TABLE orders
 -- role Table Create SQL
 CREATE TABLE multichoice_question
 (
-    `id`      INT             NOT NULL    AUTO_INCREMENT, 
-    `title`   VARCHAR(255)    NOT NULL, 
-    `testId`  INT             NOT NULL, 
+    `id`      INT         NOT NULL    AUTO_INCREMENT, 
+    `title`   LONGTEXT    NOT NULL, 
+    `testId`  INT         NOT NULL, 
     PRIMARY KEY (id)
 );
 
@@ -178,9 +199,10 @@ ALTER TABLE multichoice_question
 -- role Table Create SQL
 CREATE TABLE essay_question
 (
-    `id`      INT             NOT NULL    AUTO_INCREMENT, 
-    `title`   VARCHAR(255)    NOT NULL, 
-    `testId`  INT             NOT NULL, 
+    `id`      INT         NOT NULL    AUTO_INCREMENT, 
+    `title`   LONGTEXT    NOT NULL, 
+    `testId`  INT         NOT NULL, 
+    `score`   DOUBLE      NOT NULL, 
     PRIMARY KEY (id)
 );
 
@@ -264,6 +286,7 @@ CREATE TABLE rating
     `id`         INT    NOT NULL    AUTO_INCREMENT, 
     `rateValue`  INT    NOT NULL, 
     `courseId`   INT    NOT NULL, 
+    `userID`     INT    NOT NULL, 
     PRIMARY KEY (id)
 );
 
@@ -271,14 +294,18 @@ ALTER TABLE rating
     ADD CONSTRAINT FK_rating_courseId_course_id FOREIGN KEY (courseId)
         REFERENCES course (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
+ALTER TABLE rating
+    ADD CONSTRAINT FK_rating_userID_user_id FOREIGN KEY (userID)
+        REFERENCES user (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
 
 -- role Table Create SQL
 CREATE TABLE answer_multichoiceQ
 (
-    `id`             INT             NOT NULL    AUTO_INCREMENT, 
-    `multichoiceId`  INT             NOT NULL, 
-    `answerContent`  VARCHAR(255)    NOT NULL, 
-    `isCorrect`      BIT             NOT NULL, 
+    `id`             INT         NOT NULL    AUTO_INCREMENT, 
+    `multichoiceId`  INT         NOT NULL, 
+    `answerContent`  LONGTEXT    NOT NULL, 
+    `isCorrect`      BIT         NOT NULL, 
     PRIMARY KEY (id)
 );
 
@@ -329,12 +356,14 @@ ALTER TABLE promotion_course
 -- role Table Create SQL
 CREATE TABLE resultEssayQ
 (
-    `id`               INT             NOT NULL    AUTO_INCREMENT, 
-    `score`            DOUBLE          NOT NULL, 
-    `userAnser`        VARCHAR(255)    NOT NULL, 
-    `essayQuestionId`  INT             NOT NULL, 
-    `userId`           INT             NOT NULL, 
-    `testId`           INT             NOT NULL, 
+    `id`               INT         NOT NULL    AUTO_INCREMENT, 
+    `score`            DOUBLE      NOT NULL, 
+    `userAnswer`       LONGTEXT    NOT NULL, 
+    `times_do_test`    INT         NOT NULL, 
+    `comment`          LONGTEXT    NULL, 
+    `essayQuestionId`  INT         NOT NULL, 
+    `userId`           INT         NOT NULL, 
+    `testId`           INT         NOT NULL, 
     PRIMARY KEY (id)
 );
 
@@ -354,12 +383,13 @@ ALTER TABLE resultEssayQ
 -- role Table Create SQL
 CREATE TABLE lesson
 (
-    `id`         INT             NOT NULL    AUTO_INCREMENT, 
-    `title`      VARCHAR(45)     NOT NULL,
-    `description`  TEXT          NULL, 
-    `urlVid`     VARCHAR(45)     NULL, 
-    `sectionId`  INT             NOT NULL, 
-    `urlImg`     VARCHAR(255)    NULL, 
+    `id`             INT             NOT NULL    AUTO_INCREMENT, 
+    `title`          LONGTEXT        NOT NULL, 
+    `description`    LONGTEXT        NULL, 
+    `urlVid`         VARCHAR(255)    NULL, 
+    `videoDuration`  INT             NULL, 
+    `sectionId`      INT             NOT NULL, 
+    `urlImg`         VARCHAR(255)    NULL, 
     PRIMARY KEY (id)
 );
 
@@ -374,6 +404,7 @@ CREATE TABLE resultMultiQ
     `id`                     INT       NOT NULL    AUTO_INCREMENT, 
     `score`                  DOUBLE    NOT NULL, 
     `userAnswer`             BIT       NOT NULL, 
+    `times_do_test`          INT       NOT NULL, 
     `multichoiceQuestionId`  INT       NOT NULL, 
     `userId`                 INT       NOT NULL, 
     `testId`                 INT       NOT NULL, 
@@ -396,10 +427,9 @@ ALTER TABLE resultMultiQ
 -- role Table Create SQL
 CREATE TABLE answer_essayQ
 (
-    `id`             INT             NOT NULL    AUTO_INCREMENT, 
-    `answerContent`  VARCHAR(255)    NOT NULL, 
-    `essayId`        INT             NOT NULL, 
-    `isCorrect`      BIT             NOT NULL, 
+    `id`             INT         NOT NULL    AUTO_INCREMENT, 
+    `answerContent`  LONGTEXT    NOT NULL, 
+    `essayId`        INT         NOT NULL, 
     PRIMARY KEY (id)
 );
 
@@ -411,12 +441,13 @@ ALTER TABLE answer_essayQ
 -- role Table Create SQL
 CREATE TABLE test_result
 (
-    `id`            INT       NOT NULL    AUTO_INCREMENT, 
-    `userId`        INT       NOT NULL, 
-    `instructorId`  INT       NOT NULL, 
-    `score`         DOUBLE    NOT NULL, 
-    `testId`        INT       NOT NULL, 
-    `dateTest`      DATE      NOT NULL, 
+    `id`            INT         NOT NULL    AUTO_INCREMENT, 
+    `userId`        INT         NOT NULL, 
+    `instructorId`  INT         NOT NULL, 
+    `score`         DOUBLE      NOT NULL, 
+    `testId`        INT         NOT NULL, 
+    `dateTest`      DATETIME    NOT NULL, 
+    `timesDoTest`   INT         NOT NULL, 
     PRIMARY KEY (id)
 );
 
@@ -451,32 +482,3 @@ ALTER TABLE status_user
         REFERENCES status (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 
-/* ================Insert================*/
-INSERT INTO category (categoryName)
-VALUES 
-('Finance & Accounting'),
-('Development'),
-('Business'),
-('IT & Software'),
-('Office Productivity'),
-('Personal Development'),
-('Design'),
-('Marketing'),
-('Lifestyle'),
-('Photography'),
-('Health & Fitness'),
-('Music'),
-('Teaching & Academics'),
-('I don\'t know yet');
-
-INSERT INTO course_level (levelName)
-VALUES 
-('Beginner Level'),
-('Intermediate Level'),
-('Expert Level'),
-('All Levels');
-
-INSERT INTO role (roleName)
-VALUES
-('admin'),
-('user');
