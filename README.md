@@ -1,13 +1,12 @@
 # LearnTogether_project
 Project team about learning online website use Spring framework
 
-Framework:
-
-
-MyBatis
-
-
-Techniques:
+Technology applied:
++ HTML5/CSS3/Bootstrap
++ JQuery/Javascript
++ MyBatis
++ Spring MVC
++ Ajax
 
 Database: MariaDB
 
@@ -24,23 +23,25 @@ Main Functions:
 - Show result test (with times do test)/ test not mark
 - UI
 
-@Diep 
-- Create course/ lesson/ section
+@NguyenHongDiep 
+- Create course/ lecture/ section
+- Learn lecture though video
 - UI
 
-@Hoa 
+@VoDucHoa 
 - Cart/Payment
 - UI
 
-@Nam 
+@NguyenDoanNam 
 - Admin
+- Statistic revenue
 - UI
 
-@Pho
+@VoVanPho
 - Show course 
 - UI
 
-@Cong
+@NguyenThanhCong
 - User profile
 - Rating
 - UI
